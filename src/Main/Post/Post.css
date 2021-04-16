@@ -1,10 +1,37 @@
-.Post-full {
+.post-full {
     background-color: #F4D58D;
     border: black solid 2px;
-    height: 600px;
     width: 600px;
     position: fixed;
-    top: 200px;
+    top: 100px;
     left: 800px;
     padding: 20px;
+}
+.post-title{
+    border: 2px black solid;
+    text-align: center;
+    background-color: #001427;
+    color: #F4D58D;
+    font-family: 'Bungee', cursive;
+    padding: 15px 0px 10px 0px;
+}
+.post-inputs{
+    border: black solid 1px;
+    border-radius: 10px;
+    padding: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.time-available{
+    display: flex;
+    justify-content: space-between;
+}
+#time-available{
+    width: 80%;
+}
+.google-map{
+    width: 100%;
 }
