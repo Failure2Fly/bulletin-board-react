@@ -10,11 +10,10 @@ class Index extends React.Component {
 
         this.state = {
             show: false,
-            Post_Title: 'TITLE',
+            Post_Title: '',
             Post_Description: '',
             Post_Email: '',
             Post_PhoneNumber: '',
-            Post_Name: '',
             Post_TimeFrame: '',
             Post_Price: '',
             Post_Reward: '',
@@ -43,7 +42,6 @@ class Index extends React.Component {
             show: true,
             Post_Title: title
         });
-        console.log(this.state.show)
     };
 
     hidePost = () => {

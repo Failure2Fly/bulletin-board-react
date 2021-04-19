@@ -1,0 +1,35 @@
+{
+  "Posts": [
+		{
+			"Post": {
+				"ID": "",
+				"Type": "",
+				"Data": "" {
+					"Date": "",
+					"Description": "",
+					"Email": "",
+					"Game": "",
+					"Hobbies": "",
+					"ItemForSale_Wanted": "",
+					"JobDescription": "",
+					"JobTitle": "",
+					"LessonType": "",
+					"Location": "",
+					"PhoneNumber": "",
+					"Price": "",
+					"Requirements": "",
+					"Reward": "",
+					"SalaryRange": "",
+					"ShiftTimeAvailable": [
+
+					],
+					"ShiftTimeNeeded": "",
+					"SpacesLeft": "",
+					"Title": "",         
+					"TimeFrame": "",       
+					"Where": ""
+				}
+			}
+	 	}
+	]
+}
