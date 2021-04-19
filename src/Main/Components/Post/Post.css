@@ -1,10 +1,8 @@
 .post-full {
     background-color: #F4D58D;
     border: black solid 2px;
+    position: absolute;
     width: 600px;
-    position: fixed;
-    top: 100px;
-    left: 800px;
     padding: 20px;
 }
 .post-title{

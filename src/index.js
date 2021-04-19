@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Nav from './Main/Nav'
+import Index from './Main/index';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Nav/>
+    <Index/>
   </React.StrictMode>,
   document.getElementById('root')
 );
