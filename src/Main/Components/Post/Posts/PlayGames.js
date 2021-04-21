@@ -9,12 +9,6 @@ import PostEmail from '../PostElements/Email';
 
 class PlayGames extends React.Component {
 
-    constructor(props){
-        super(props)
-
-    }
-    
-
     render() {
         return (
             <div className="post-full">
@@ -23,19 +17,19 @@ class PlayGames extends React.Component {
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
-                        <PostActivity/>
-                        <PostTime/>
-                        <PostDate/>
-                        <PostDescription/>
-                        <PostPhoneNumber/>
-                        <PostEmail/>   
+                        <PostActivity PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostTime PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDate PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostPhoneNumber PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostEmail PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>   
                     </div>
                     <div className="buttons">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary" onClick={() => {this.props.submitPost()}}>
                             Submit 
                         </button> 
 
-                        <button type="button" class="btn btn-danger" onClick={() => {this.props.hidePost()}}>
+                        <button type="button" className="btn btn-danger" onClick={() => {this.props.hidePost()}}>
                             Close 
                         </button>  
                     </div>

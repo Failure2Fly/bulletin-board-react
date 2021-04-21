@@ -8,11 +8,6 @@ import PostSpacesLeft from '../PostElements/SpacesLeft';
 
 class CarPool extends React.Component {
 
-    constructor(props){
-        super(props)
-
-    }
-    
 
     render() {
         return (
@@ -22,18 +17,18 @@ class CarPool extends React.Component {
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
-                        <PostTime/>
-                        <PostDate/>
-                        <PostEmail/>
-                        <PostPhoneNumber/>
-                        <PostSpacesLeft/>
+                        <PostTime PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDate PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostEmail PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostPhoneNumber PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostSpacesLeft PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                     </div>
                     <div className="buttons">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary" onClick={() => {this.props.submitPost()}}>
                             Submit 
                         </button> 
 
-                        <button type="button" class="btn btn-danger" onClick={() => {this.props.hidePost()}}>
+                        <button type="button" className="btn btn-danger" onClick={() => {this.props.hidePost()}}>
                             Close 
                         </button>  
                     </div>

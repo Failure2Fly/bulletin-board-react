@@ -6,7 +6,7 @@ class PostImage extends React.Component {
         return (
             <div className="form-group">
                 <h5>Image</h5>
-                <input type="file" className="form-control-file" id="exampleFormControlFile1"></input>
+                <input type="file" className="form-control-file" id="Image" name="Post_Image" value={this.props.PostElement.Post_Image} onChange={this.props.handleChange}></input>
             </div>
         )
     }   

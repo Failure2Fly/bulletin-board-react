@@ -6,7 +6,7 @@ class PostDate extends React.Component {
         return (
             <div className="form-group">
                 <h5>Date</h5>
-                    <input type="date" className="form-control" id="date" placeholder="Date"></input>
+                    <input type="date" className="form-control" id="date" placeholder="Date" name="Post_Date" value={this.props.PostElement.Post_Date} onChange={this.props.handleChange}></input>
             </div>
         )
     }   

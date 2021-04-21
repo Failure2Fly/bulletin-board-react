@@ -8,11 +8,6 @@ import PostJobRequirements from '../PostElements/JobRequirements';
 
 class JobPosting extends React.Component {
 
-    constructor(props){
-        super(props)
-
-    }
-    
 
     render() {
         return (
@@ -22,17 +17,17 @@ class JobPosting extends React.Component {
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
-                        <PostJobTitle/>
-                        <PostDescription/>
-                        <PostSalary/>
-                        <PostJobRequirements/>
+                        <PostJobTitle PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostSalary PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostJobRequirements PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                     </div>
                     <div className="buttons">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary" onClick={() => {this.props.submitPost()}}>
                             Submit 
                         </button> 
 
-                        <button type="button" class="btn btn-danger" onClick={() => {this.props.hidePost()}}>
+                        <button type="button" className="btn btn-danger" onClick={() => {this.props.hidePost()}}>
                             Close 
                         </button>  
                     </div>

@@ -1,36 +1,71 @@
 {
-  "Posts": 
-	{
-		"Post1": {
-			"Type": "",
-			"Data":  {
-				"Date": "",
-				"Description": "",
-				"Email": "",
-				"Game": "",
-				"Hobbies": "",
-				"ItemForSale_Wanted": "",
-				"JobDescription": "",
-				"JobTitle": "",
-				"LessonType": "",
-				"Location": "",
-				"PhoneNumber": "",
-				"Price": "",
-				"Requirements": "",
-				"Reward": "",
-				"SalaryRange": "",
-				"ShiftTimeAvailable": {
-					"TimeAvailable1": "",
-					"TimeAvailable2": "",
-					"TimeAvailable3": "",
-					"TimeAvailable4":""
-				},
-				"ShiftTimeNeeded": "",
-				"SpacesLeft": "",
-				"Title": "",         
-				"TimeFrame": "",       
-				"Where": ""
-			}
+	"Posts": {
+		"LOST PET": {
+			"Image": "",
+			"Description": "",
+			"Email": "",
+			"PhoneNumber": "",
+			"Reward": ""
+		},
+		"LESSONS": {
+			"TimeAvailableFrom": "",
+			"TimeAvailableTo": "",
+			"Price": "",
+			"Email": "",
+			"PhoneNumber": "",
+			"LessonType": ""
+		},
+		"CAR POOL": {
+			"Time": "",
+			"Date": "",
+			"Email": "",
+			"PhoneNumber": "",
+			"SpacesLeft": ""
+		},
+		"JOB POSTING": {
+			"JobTitle": "",
+			"Description": "",
+			"SalaryRange": "",
+			"JobRequirements": ""
+		},
+		"SHIFT COVERAGE": {
+			"ShiftTimeNeeded": "",
+			"TimeAvailable1": "",
+			"TimeAvailable2": "",
+			"TimeAvailable3": "",
+			"TimeAvailable4": ""
+		},
+		"SELLING-WANTED": {
+			"ItemForSaleWanted": "",
+			"SellWant": "",
+			"Price": "",
+			"Email": "",
+			"PhoneNumber": ""
+		},
+		"VOLUNTEERS": {
+			"Where": "",
+			"Time": "",
+			"Date": "",
+			"Description": ""
+		},
+		"PARTY": {
+			"Where": "",
+			"Time": "",
+			"Date": "",
+			"Description": ""
+		},
+		"LOOKING FOR FRIENDS": {
+			"Hobbies": "",
+			"PhoneNumber": "",
+			"Email": ""
+		},
+		"PLAY GAMES": {
+			"Game": "",
+			"Time": "",
+			"Date": "",
+			"Description": "",
+			"PhoneNumber": "",
+			"Email": ""
 		}
 	}
 }

@@ -3,12 +3,6 @@ import './css/Nav.css';
 
 class Nav extends React.Component{
 
-    constructor(props){
-        super(props)
-        
-    }
- 
-
     
     render(){
     
@@ -53,7 +47,7 @@ class Nav extends React.Component{
                 </div>
 
                 <div className="col-12 col-md-6 bulletin-lost-cat">
-                    <button onClick={() => this.props.showPost('SELLING/WANTED')}>                      
+                    <button onClick={() => this.props.showPost('SELLING-WANTED')}>                      
                         <h5>Selling/
                             Wanted</h5>
                     </button> 

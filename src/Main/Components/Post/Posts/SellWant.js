@@ -8,12 +8,6 @@ import PostPhoneNumber from '../PostElements/PhoneNumber';
 
 class SellWant extends React.Component {
 
-    constructor(props){
-        super(props)
-
-    }
-    
-
     render() {
         return (
             <div className="post-full">
@@ -22,18 +16,18 @@ class SellWant extends React.Component {
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
-                        <PostItemForSaleWanted/>
-                        <PostSellWantedRadio/>
-                        <PostPrice/>
-                        <PostEmail/>
-                        <PostPhoneNumber/>
+                        <PostItemForSaleWanted PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostSellWantedRadio PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostPrice PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostEmail PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostPhoneNumber PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                     </div>
                     <div className="buttons">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary" onClick={() => {this.props.submitPost()}}>
                             Submit 
                         </button> 
 
-                        <button type="button" class="btn btn-danger" onClick={() => {this.props.hidePost()}}>
+                        <button type="button" className="btn btn-danger" onClick={() => {this.props.hidePost()}}>
                             Close 
                         </button>  
                     </div>

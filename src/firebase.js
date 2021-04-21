@@ -12,14 +12,15 @@ const firebaseConfig = {
     messagingSenderId: "395892185912",
     appId: "1:395892185912:web:82d385e5c1b13a8c9f7fcd",
     measurementId: "G-54P5QC4PL8"
-  };
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-  const firebaseDatabase = firebase.database();
-  const firebasePosts = firebaseDatabase.ref('posts');
+const firebaseDatabase = firebase.database();
+const firebasePosts = firebaseDatabase.ref('Posts');
 
-  export {
-      firebase,
-      firebasePosts
-  }
+export {
+    firebase,
+    firebasePosts
+}
+

@@ -7,11 +7,6 @@ import PostDescription from '../PostElements/Description';
 
 class Volunteers extends React.Component {
 
-    constructor(props){
-        super(props)
-
-    }
-    
 
     render() {
         return (
@@ -21,17 +16,17 @@ class Volunteers extends React.Component {
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
-                        <PostWhere/>
-                        <PostTime/>
-                        <PostDate/>
-                        <PostDescription/>   
+                        <PostWhere PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostTime PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDate PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>   
                     </div>
                     <div className="buttons">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary" onClick={() => {this.props.submitPost()}}>
                             Submit 
                         </button> 
 
-                        <button type="button" class="btn btn-danger" onClick={() => {this.props.hidePost()}}>
+                        <button type="button" className="btn btn-danger" onClick={() => {this.props.hidePost()}}>
                             Close 
                         </button>  
                     </div>
