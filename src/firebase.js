@@ -19,6 +19,7 @@ firebase.initializeApp(firebaseConfig);
 const firebaseDatabase = firebase.database();
 const firebasePosts = firebaseDatabase.ref('Posts');
 
+
 export {
     firebase,
     firebasePosts

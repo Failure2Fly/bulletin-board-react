@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './Components/Nav';
 import Bulletin from './Components/Bulletin';
 import PostForm from './Components/PostForm';
-import {firebase} from '../firebase';
+import {firebasePosts} from '../firebase';
 
 class Index extends React.Component {
 
@@ -18,13 +18,12 @@ class Index extends React.Component {
             Post_Hobbies: "",
             Post_Image: "",
             Post_ItemForSale_Wanted: "",
-            Post_JobDescription: "",
             Post_JobTitle: "",
             Post_LessonType: "",
             Post_Location: "",
             Post_PhoneNumber: "",
             Post_Price: "",
-            Post_Requirements: "",
+            Post_JobRequirements: "",
             Post_Reward: "",
             Post_SalaryRange: "",
             Post_Sell_Want: "",
@@ -72,8 +71,9 @@ class Index extends React.Component {
     
     submitPost = () => {
         if(this.state.Post_Title === "LOST PET"){
-            firebase.database().ref('Posts/' + 'LOST PET/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 Image: this.state.Post_Image,
                 Description: this.state.Post_Description,
                 Email: this.state.Post_Email,
@@ -82,8 +82,9 @@ class Index extends React.Component {
             })
         }        
         else if (this.state.Post_Title === "LESSONS"){
-            firebase.database().ref('Posts/' + 'LESSONS/').push().set({
-                TimeSubmitted: Date(), 
+            firebasePosts.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
                 TimeAvailableFrom: this.state.Post_TimeAvailableFrom,
 	            TimeAvailableTo: this.state.Post_TimeAvailableTo,
                 Price: this.state.Post_Price,
@@ -93,8 +94,9 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "CAR POOL"){
-            firebase.database().ref('Posts/' + 'CAR POOL/').push().set({
-                TimeSubmitted: Date(), 
+            firebasePosts.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
                 Time: this.state.Post_Time,
                 Date: this.state.Post_Date,
                 PhoneNumber: this.state.Post_PhoneNumber,
@@ -103,17 +105,19 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "JOB POSTING"){
-            firebase.database().ref('Posts/' + 'JOB POSTING/').push().set({
-                TimeSubmitted: Date(), 
+            firebasePosts.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
                 JobTitle: this.state.Post_JobTitle,
-                JobDescription: this.state.Post_JobDescription,
+                JobDescription: this.state.Post_Description,
                 SalaryRange: this.state.Post_SalaryRange,
-                JobRequirements: this.state.Post_Requirements
+                JobRequirements: this.state.Post_JobRequirements
             })
         }
         else if (this.state.Post_Title === "SHIFT COVERAGE"){
-            firebase.database().ref('Posts/' + 'SHIFT COVERAGE/').push().set({
-                TimeSubmitted: Date(), 
+            firebasePosts.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
                 ShiftTimeNeeded: this.state.Post_ShiftTimeNeeded,
                 ShiftTimeAvailable: {
                     TimeAvailable1: this.state.Post_ShiftTimeAvailable1,
@@ -125,8 +129,9 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "SELLING-WANTED"){
-            firebase.database().ref('Posts/' + 'SELLING-WANTED/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
                 Price: this.state.Post_Price,
                 PhoneNumber: this.state.Post_PhoneNumber,
@@ -134,8 +139,9 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "VOLUNTEERS"){
-            firebase.database().ref('Posts/' + 'SELLING-WANTED/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 SellWant: this.state.Post_Sell_Want,
                 Where: this.state.Post_Where,
                 Time: this.state.Post_Time,
@@ -144,8 +150,9 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "PARTY"){
-            firebase.database().ref('Posts/' + 'PARTY/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 Where: this.state.Post_Where,
                 Time: this.state.Post_Time,
                 Date: this.state.Post_Date,
@@ -153,16 +160,18 @@ class Index extends React.Component {
             })
         }
         else if (this.state.Post_Title === "LOOKING FOR FRIENDS"){
-            firebase.database().ref('Posts/' + 'LOOKING FOR FRIENDS/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 Hobbies: this.state.Post_Hobbies,
                 PhoneNumber: this.state.Post_PhoneNumber,
                 Email: this.state.Post_Email
             })
         }
         else if (this.state.Post_Title === "PLAY GAMES"){
-            firebase.database().ref('Posts/' + 'PLAY GAMES/').push().set({ 
+            firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
                 Game: this.state.Post_Game,
                 Time: this.state.Post_Time,
                 Date: this.state.Post_Date,
