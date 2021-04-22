@@ -71,39 +71,109 @@ class Index extends React.Component {
     }
     
     submitPost = () => {
-        firebase.database().ref('Posts/' + this.state.Post_Title + '/').push().set({
-            Date: this.state.Post_Date,
-            Description: this.state.Post_Description,
-            Email: this.state.Post_Email,
-            Game: this.state.Post_Game,
-            Hobbies: this.state.Post_Hobbies,
-            Image: this.state.Post_Image,
-            ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
-            JobDescription: this.state.Post_JobDescription,
-            JobTitle: this.state.Post_JobTitle,
-            LessonType: this.state.Post_LessonType,
-            Location: this.state.Post_Location,
-            PhoneNumber: this.state.Post_PhoneNumber,
-            Price: this.state.Post_Price,
-            Requirements: this.state.Post_Requirements,
-            Reward: this.state.Post_Reward,
-            SalaryRange: this.state.Post_SalaryRange,
-            ShiftTimeAvailable: {
-                TimeAvailable1: this.state.Post_ShiftTimeAvailable1,
-                TimeAvailable2: this.state.Post_ShiftTimeAvailable2,
-                TimeAvailable3: this.state.Post_ShiftTimeAvailable3,
-                TimeAvailable4: this.state.Post_ShiftTimeAvailable4
-            },
-            ShiftTimeNeeded: this.state.Post_ShiftTimeNeeded,
-            SpacesLeft: this.state.Post_SpacesLeft,
-            Time: this.state.Post_Time,
-            TimeAvailableFrom: this.state.Post_TimeAvailableFrom,
-            TimeAvailableTo: this.state.Post_TimeAvailableTo,
-            TimeSubmitted: Date(),
-            Title: this.state.Post_Title,         
-            Type: this.state.Post_Type,       
-            Where: this.state.Post_Where
-        })       
+        if(this.state.Post_Title === "LOST PET"){
+            firebase.database().ref('Posts/' + 'LOST PET/').push().set({ 
+                TimeSubmitted: Date(),
+                Image: this.state.Post_Image,
+                Description: this.state.Post_Description,
+                Email: this.state.Post_Email,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Reward: this.state.Post_Reward
+            })
+        }        
+        else if (this.state.Post_Title === "LESSONS"){
+            firebase.database().ref('Posts/' + 'LESSONS/').push().set({
+                TimeSubmitted: Date(), 
+                TimeAvailableFrom: this.state.Post_TimeAvailableFrom,
+	            TimeAvailableTo: this.state.Post_TimeAvailableTo,
+                Price: this.state.Post_Price,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                LessonType: this.state.Post_LessonType
+            })
+        }
+        else if (this.state.Post_Title === "CAR POOL"){
+            firebase.database().ref('Posts/' + 'CAR POOL/').push().set({
+                TimeSubmitted: Date(), 
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                SpacesLeft: this.state.Post_SpacesLeft
+            })
+        }
+        else if (this.state.Post_Title === "JOB POSTING"){
+            firebase.database().ref('Posts/' + 'JOB POSTING/').push().set({
+                TimeSubmitted: Date(), 
+                JobTitle: this.state.Post_JobTitle,
+                JobDescription: this.state.Post_JobDescription,
+                SalaryRange: this.state.Post_SalaryRange,
+                JobRequirements: this.state.Post_Requirements
+            })
+        }
+        else if (this.state.Post_Title === "SHIFT COVERAGE"){
+            firebase.database().ref('Posts/' + 'SHIFT COVERAGE/').push().set({
+                TimeSubmitted: Date(), 
+                ShiftTimeNeeded: this.state.Post_ShiftTimeNeeded,
+                ShiftTimeAvailable: {
+                    TimeAvailable1: this.state.Post_ShiftTimeAvailable1,
+                    TimeAvailable2: this.state.Post_ShiftTimeAvailable2,
+                    TimeAvailable3: this.state.Post_ShiftTimeAvailable3,
+                    TimeAvailable4: this.state.Post_ShiftTimeAvailable4
+                },
+                PhoneNumber: this.state.Post_PhoneNumber
+            })
+        }
+        else if (this.state.Post_Title === "SELLING-WANTED"){
+            firebase.database().ref('Posts/' + 'SELLING-WANTED/').push().set({ 
+                TimeSubmitted: Date(),
+                ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
+                Price: this.state.Post_Price,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email
+            })
+        }
+        else if (this.state.Post_Title === "VOLUNTEERS"){
+            firebase.database().ref('Posts/' + 'SELLING-WANTED/').push().set({ 
+                TimeSubmitted: Date(),
+                SellWant: this.state.Post_Sell_Want,
+                Where: this.state.Post_Where,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                Description: this.state.Post_Description
+            })
+        }
+        else if (this.state.Post_Title === "PARTY"){
+            firebase.database().ref('Posts/' + 'PARTY/').push().set({ 
+                TimeSubmitted: Date(),
+                Where: this.state.Post_Where,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                Description: this.state.Post_Description
+            })
+        }
+        else if (this.state.Post_Title === "LOOKING FOR FRIENDS"){
+            firebase.database().ref('Posts/' + 'LOOKING FOR FRIENDS/').push().set({ 
+                TimeSubmitted: Date(),
+                Hobbies: this.state.Post_Hobbies,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email
+            })
+        }
+        else if (this.state.Post_Title === "PLAY GAMES"){
+            firebase.database().ref('Posts/' + 'PLAY GAMES/').push().set({ 
+                TimeSubmitted: Date(),
+                Game: this.state.Post_Game,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+	            Description: this.state.Post_Description,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email
+            })
+        }
+        else{
+            return null
+        }
     }
 
     render() {

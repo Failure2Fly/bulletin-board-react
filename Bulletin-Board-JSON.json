@@ -33,7 +33,8 @@
 			"TimeAvailable1": "",
 			"TimeAvailable2": "",
 			"TimeAvailable3": "",
-			"TimeAvailable4": ""
+			"TimeAvailable4": "",
+			"PhoneNumber": ""
 		},
 		"SELLING-WANTED": {
 			"ItemForSaleWanted": "",
@@ -69,3 +70,5 @@
 		}
 	}
 }
+
+
