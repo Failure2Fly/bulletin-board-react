@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './Components/Nav';
 import Bulletin from './Components/Bulletin';
 import PostForm from './Components/PostForm';
-import {firebasePosts} from '../firebase';
+import {firebasePosts, firebaseDatabase} from '../firebase';
 
 class Index extends React.Component {
 

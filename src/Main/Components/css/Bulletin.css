@@ -1,6 +1,5 @@
 .bulletin {
     background-image: url("../../../img/cork-board.jpg");
-    height: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;

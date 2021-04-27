@@ -22,6 +22,7 @@ const firebasePosts = firebaseDatabase.ref('Posts');
 
 export {
     firebase,
+    firebaseDatabase,
     firebasePosts
 }
 

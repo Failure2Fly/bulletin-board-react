@@ -5,11 +5,18 @@
     width: 600px;
     padding: 20px;
 }
+.post-list {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
 .post-complete {
     background-color: #F4D58D;
     border: black solid 2px;
     width: 400px;
     padding: 20px;
+    margin: 40px;
 }
 .post-title{
     border: 2px black solid;
@@ -23,6 +30,7 @@
     border: black solid 1px;
     border-radius: 10px;
     padding: 20px;
+    margin-top: 20px;
 }
 .buttons{
     display: flex;
