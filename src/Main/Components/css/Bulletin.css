@@ -5,3 +5,9 @@
     align-items: flex-start;
     flex-wrap: wrap;
 }
+.pagination-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+}

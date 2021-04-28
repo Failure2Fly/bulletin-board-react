@@ -8,7 +8,7 @@ class Bulletin extends React.Component{
     return (
       <div className="bulletin col col-lg-10">
           <PostComplete PostComplete={this.props.PostInfo}/>
-          <nav aria-label="Page navigation example">
+          <nav className="pagination-bar" aria-label="Page navigation example">
             <ul className="pagination">
               <li className="page-item">
                 <a className="page-link" href="#" aria-label="Previous">
