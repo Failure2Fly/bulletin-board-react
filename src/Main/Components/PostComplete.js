@@ -20,7 +20,7 @@ class PostComplete extends React.Component{
         this.setState({Posts: Posts})
       })
     })
-    alert("ATTENTION! ATTENTION! ATTENTION! ATTENTION! ATTENTION! --------------------------------------------------------------------------- This is a work in progress. Some aspects of this project do not work yet. Such as, the 'Search For A Post' buttons or the pagination, as well as a few other features. A lot wanting to be added. Gotta start somewhere. --------------------------------------------------------------------------- You can create a post and see it displayed. Will only display first 6 posts that have been created, until pagination is working.")
+    // alert("ATTENTION! ATTENTION! ATTENTION! ATTENTION! ATTENTION! --------------------------------------------------------------------------- This is a work in progress. Some aspects of this project do not work yet. Such as, the 'Search For A Post' buttons or the pagination, as well as a few other features. A lot wanting to be added. Gotta start somewhere. --------------------------------------------------------------------------- You can create a post and see it displayed. Will only display first 6 posts that have been created, until pagination is working.")
   }
 
   // LostPetSearch = () => {
@@ -38,69 +38,328 @@ class PostComplete extends React.Component{
     return (
       <div className="post-list">
         {this.state.Posts.map(data => {
+          if(data.Type === "LOST PET") {
             return (
               <div className="post-complete">
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
-                <div className="post-inputs">
-                  <div>
-                    {data.LessonType}
-                  </div>
-                  <div>
-                    {data.ItemForSale_Wanted}
-                  </div>
-                  <div>
-                    {data.Price}
-                  </div>
-                  <div>
-                    {data.JobTitle}
-                  </div>
-                  <div>
-                    {data.Image}
-                  </div>
-                  <div>
-                    {data.Hobbies}
-                  </div>
-                  <div>
-                    {data.Where}
-                  </div>
-                  <div>
-                    {data.Date}
-                  </div>
-                  <div>
-                    {data.TimeAvailableFrom}
-                  </div>
-                  <div>
-                  {data.TimeAvailableTo}
-                  </div>
-                  <div>
-                    {data.Time}
-                  </div>
-                  <div>
-                    {data.JobDescription}
-                  </div>
-                  <div>
-                    {data.Description}
-                  </div>
-                  <div>
-                    {data.PhoneNumber}
-                  </div>
-                  <div>
-                    {data.Email}
-                  </div>
-                  <div>
-                    {data.Reward}
-                  </div>
-                  <div>
-                    {data.SalaryRange}
-                  </div>
-                  <div>
-                    {data.JobRequirements}
-                  </div>
-                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Image</th>
+                      <td>{data.Image}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description</th>
+                      <td>{data.Description}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Reward</th>
+                      <td>{data.Reward}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            )        
+            )
+          }
+          else if(data.Type === "LESSONS") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Lesson Type</th>
+                      <td>{data.LessonType}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Price per hour</th>
+                      <td>{data.Price}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time Available From</th>
+                      <td>{data.TimeAvailableFrom}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time Available To</th>
+                      <td>{data.TimeAvailableTo}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "CAR POOL") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Date</th>
+                      <td>{data.Date}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time</th>
+                      <td>{data.Time}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">PhoneNumber</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Spots Left</th>
+                      <td>{data.SpacesLeft}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "JOB POSTING") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Job Title</th>
+                      <td>{data.JobTitle}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Job Requirements</th>
+                      <td>{data.JobRequirements}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Job Description</th>
+                      <td>{data.JobDescription}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Salary</th>
+                      <td>{data.SalaryRange}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "SHIFT COVERAGE") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Shift Time Needing Covered</th>
+                      <td>{data.ShiftTimeNeeded}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Shift Times Available To Trade</th>
+                      <td>{data.ShiftTimeAvailable.TimeAvailable1}</td>
+                    </tr>
+                    {/* <tr>
+                      <th></th>
+                      <td>{data.ShiftTimeAvailable.TimeAvailable2}</td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <td>{data.ShiftTimeAvailable.TimeAvailable3}</td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <td>{data.ShiftTimeAvailable.TimeAvailable4}</td>
+                    </tr> */}
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "SELLING-WANTED") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Item For Sale/Wanted</th>
+                      <td>{data.ItemForSale_Wanted}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description</th>
+                      <td>{data.Description}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Price</th>
+                      <td>{data.Price}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "VOLUNTEERS") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Address</th>
+                      <td>{data.Where}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date</th>
+                      <td>{data.Date}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time</th>
+                      <td>{data.Time}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description</th>
+                      <td>{data.Description}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "PARTY") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Where</th>
+                      <td>{data.Where}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date</th>
+                      <td>{data.Date}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time</th>
+                      <td>{data.Time}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description</th>
+                      <td>{data.Description}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "LOOKING FOR FRIENDS") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Hobbies</th>
+                      <td>{data.Hobbies}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
+          else if(data.Type === "PLAY GAMES") {
+            return (
+              <div className="post-complete">
+                <div className="form-group post-title">
+                  <h2>{data.Type}</h2>
+                </div>
+                <table class="table post-results">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Game</th>
+                      <td>{data.Game}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time</th>
+                      <td>{data.Time}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date</th>
+                      <td>{data.Date}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Description</th>
+                      <td>{data.Description}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Phone Number</th>
+                      <td>{data.PhoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td>{data.Email}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )
+          }    
         })}
       </div>
     )

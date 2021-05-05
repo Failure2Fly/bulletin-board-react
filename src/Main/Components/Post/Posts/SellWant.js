@@ -1,6 +1,7 @@
 import React from 'react';
 import PostItemForSaleWanted from '../PostElements/ItemForSaleWanted';
 import PostSellWantedRadio from '../PostElements/SellWantedRadio';
+import PostDescription from '../PostElements/Description';
 import PostPrice from '../PostElements/Price';
 import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
@@ -18,6 +19,7 @@ class SellWant extends React.Component {
                     <div className="post-inputs">
                         <PostItemForSaleWanted PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostSellWantedRadio PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
+                        <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostPrice PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostEmail PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostPhoneNumber PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>

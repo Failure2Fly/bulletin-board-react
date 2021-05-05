@@ -6,8 +6,8 @@ import {firebasePosts, firebaseDatabase} from '../firebase';
 
 class Index extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
             show: false,
@@ -67,6 +67,7 @@ class Index extends React.Component {
             [event.target.name]: value
         })
         console.log(event)
+        console.log(this.state.Post_Title)
     }
     
     submitPost = () => {
@@ -133,6 +134,7 @@ class Index extends React.Component {
                 TimeSubmitted: Date(),
                 Type: this.state.Post_Title,
                 ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
+                Description: this.state.Post_Description,
                 Price: this.state.Post_Price,
                 PhoneNumber: this.state.Post_PhoneNumber,
                 Email: this.state.Post_Email

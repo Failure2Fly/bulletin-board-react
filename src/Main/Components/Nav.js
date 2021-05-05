@@ -56,8 +56,8 @@ class Nav extends React.Component{
                         <button className="post-button" onClick={() => this.props.showPost('SHIFT COVERAGE')} >                      
                             <h5>Shift Coverage</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('SELLING/WANTED')}>                      
-                            <h5>Selling/Wanted</h5>
+                        <button className="post-button" onClick={() => this.props.showPost('SELLING-WANTED')}>                      
+                            <h5>Selling-Wanted</h5>
                         </button>
                         <button className="post-button" onClick={() => this.props.showPost('VOLUNTEERS')} >                      
                             <h5>Volunteers</h5>

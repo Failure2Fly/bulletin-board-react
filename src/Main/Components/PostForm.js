@@ -40,7 +40,7 @@ class PostForm extends React.Component{
           <ShiftCoverage hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
         );
       } 
-      else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'SELLING/WANTED'){
+      else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'SELLING-WANTED'){
         return (
           <SellWant hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
         );
