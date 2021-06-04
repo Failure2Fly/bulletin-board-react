@@ -1,5 +1,8 @@
 import React from 'react';
-import {firebasePosts, firebaseDatabase} from '../../firebase';
+import {firebasePosts, 
+  // firebaseDatabase, 
+  // firebaseLostPet, firebaseLessons, firebaseCarPool, firebaseJobPosting, firebaseShiftCoverage, firebaseSellWant, firebaseVolunteers, firebaseParty, firebaseLookingForFriends, firebasePlayGames
+} from '../../firebase';
 
 class PostComplete extends React.Component{
 
@@ -9,7 +12,7 @@ class PostComplete extends React.Component{
     this.state = {
       Posts: []
     }
-
+    
   }
 
   componentDidMount(){
@@ -19,18 +22,17 @@ class PostComplete extends React.Component{
         Posts.push(snap.val());
         this.setState({Posts: Posts})
       })
+      console.log(Posts)
     })
     // alert("ATTENTION! ATTENTION! ATTENTION! ATTENTION! ATTENTION! --------------------------------------------------------------------------- This is a work in progress. Some aspects of this project do not work yet. Such as, the 'Search For A Post' buttons or the pagination, as well as a few other features. A lot wanting to be added. Gotta start somewhere. --------------------------------------------------------------------------- You can create a post and see it displayed. Will only display first 6 posts that have been created, until pagination is working.")
+    
   }
 
-  // LostPetSearch = () => {
-  //   firebaseDatabase.ref('Posts/LOST PET').limitToFirst(6).on("value", snapshot => {
-  //     let Posts = [];
-  //     snapshot.forEach(snap => {
-  //       Posts.push(snap.val());
-  //       this.setState({Posts: Posts})
-  //     })
-  //   })
+  // componentDidUpdate(props, snapshot) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (this.props.Posts !== props.Posts) {
+  //     this.fetchData(this.props.Posts);
+  //   }
   // }
 
 
@@ -40,7 +42,7 @@ class PostComplete extends React.Component{
         {this.state.Posts.map(data => {
           if(data.Type === "LOST PET") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -73,7 +75,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "LESSONS") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -110,7 +112,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "CAR POOL") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -143,7 +145,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "JOB POSTING") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -172,7 +174,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "SHIFT COVERAGE") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -209,14 +211,14 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "SELLING-WANTED") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
-                  <h2>{data.Type}</h2>
+                  <h2>{data.Sell_Want}</h2>
                 </div>
                 <table class="table post-results">
                   <tbody>
                     <tr>
-                      <th scope="row">Item For Sale/Wanted</th>
+                      <th scope="row">Item {data.Sell_Want}</th>
                       <td>{data.ItemForSale_Wanted}</td>
                     </tr>
                     <tr>
@@ -242,7 +244,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "VOLUNTEERS") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -271,7 +273,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "PARTY") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -300,7 +302,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "LOOKING FOR FRIENDS") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -325,7 +327,7 @@ class PostComplete extends React.Component{
           }
           else if(data.Type === "PLAY GAMES") {
             return (
-              <div className="post-complete">
+              <div className="post-complete" style={{backgroundColor: data.BackgroundColor}}>
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
@@ -365,6 +367,7 @@ class PostComplete extends React.Component{
     )
   }
 }
+
 
 export default PostComplete;
 

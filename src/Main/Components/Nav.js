@@ -1,28 +1,14 @@
 import React from 'react';
 import './css/Nav.css';
-// import {LostPetSearch} from './PostComplete';
-import { firebaseDatabase} from '../../firebase';
+import searchForPost from './PostComplete';
+// import {firebasePosts, firebaseDatabase, firebaseLostPet, firebaseLessons, firebaseCarPool, firebaseJobPosting, firebaseShiftCoverage, firebaseSellWant, firebaseVolunteers, firebaseParty, firebaseLookingForFriends, firebasePlayGames} from '../../firebase';
 
 class Nav extends React.Component{
 
-    // constructor(props) {
-    //     super(props)
-    
-    //     this.state = {
-    //       Posts: []
-    //     }
-    
-    // }
+    constructor(props) {
+        super(props)
 
-    // LostPetSearch = () => {
-    //     firebaseDatabase.ref('Posts').equalTo('LOST PET').limitToFirst(6).on("value", snapshot => {
-    //         let Posts = [];
-    //         snapshot.forEach(snap => {
-    //         Posts.push(snap.val());
-    //         this.setState({Posts: Posts})
-    //         })
-    //     })
-    // }
+    }
     
     render(){
     
@@ -80,34 +66,34 @@ class Nav extends React.Component{
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <button className="post-button" onClick={() => this.props.showPost('LOST PET')} >                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('LostPet')} >                      
                             <h5>Lost Pet</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('LESSONS')}>                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('Lessons')}>                      
                             <h5>Lessons</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('CAR POOL')} >                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('CarPool')} >                      
                             <h5>Car Pool</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('JOB POSTING')}>                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('JobPosting')}>                      
                             <h5>Job Posting</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('SHIFT COVERAGE')} >                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('ShiftCoverage')} >                      
                             <h5>Shift Coverage</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('SELLING/WANTED')}>                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('SellWant')}>                      
                             <h5>Selling/Wanted</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('VOLUNTEERS')} >                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('Volunteers')} >                      
                             <h5>Volunteers</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('PARTY')}>                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('Party')}>                      
                             <h5>Party</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('LOOKING FOR FRIENDS')} >                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('LookingForFriends')} >                      
                             <h5>Looking For Friends</h5>
                         </button>
-                        <button className="post-button" onClick={() => this.props.showPost('PLAY GAMES')}>                      
+                        <button className="post-button" onClick={() => this.props.searchForPost('PlayGames')}>                      
                             <h5>Play Games</h5>
                         </button>
                     </div>

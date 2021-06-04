@@ -17,7 +17,7 @@ class PostForm extends React.Component{
   render() {
       if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'LOST PET'){
         return (
-          <LostPet hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <LostPet hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       }
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'LESSONS'){

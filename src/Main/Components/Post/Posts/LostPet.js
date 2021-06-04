@@ -4,17 +4,20 @@ import PostDescription from '../PostElements/Description';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostImage from '../PostElements/Image';
 import PostReward from '../PostElements/Reward';
+import ColorPicker from '../../../ColorPicker';
 
 class LostPet extends React.Component {  
 
     render() {
         return (
-            <div className="post-full">
+            <div className="post-full" style={{backgroundColor:this.props.PostInfo.Post_Background_Color}}>
             <form>
               <div className="form-group post-title">
                   <h2>{this.props.PostInfo.Post_Title}</h2>
+                  <h2>{this.props.PostInfo.Post_Background_Color}</h2>
               </div>
               <div className="post-inputs">
+                <ColorPicker PostElement={this.props.PostInfo} handleChange={this.props.handleChange} onChangeComplete={this.props.onChangeComplete}/>
                 <PostImage PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                 <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                 <PostEmail PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>

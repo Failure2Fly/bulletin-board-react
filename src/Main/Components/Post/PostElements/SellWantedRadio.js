@@ -6,12 +6,12 @@ class PostSellWantedRadio extends React.Component {
         return (
             <div className="form-group">
                 <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="checkbox" id="Sell" value={this.props.PostElement.Post_Sell_Want} name="Post_Sell_Want" onChange={this.props.handleChange}></input>
-                    <label className="form-check-label" for="inlineCheckbox1">Selling</label>
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="Sell" value="Selling" name={this.props.Post_Sell_Want} onChange={this.props.handleChange}></input>
+                    <label className="form-check-label" for="inlineRadio1">Sell</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="checkbox" id="Want" value={this.props.PostElement.Post_Sell_Want} name="Post_Sell_Want" onChange={this.props.handleChange}></input>
-                    <label className="form-check-label" for="inlineCheckbox2">Wanting</label>
+                <input className="form-check-input" type="radio" name="inlineRadioOptions" id="Want" value="Wanted" name={this.props.Post_Sell_Want} onChange={this.props.handleChange}></input>
+                    <label className="form-check-label" for="inlineRadio2">Want</label>
                 </div>
             </div>
         )

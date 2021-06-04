@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from './Components/Nav';
 import Bulletin from './Components/Bulletin';
 import PostForm from './Components/PostForm';
-import {firebasePosts, firebaseDatabase} from '../firebase';
+import {firebasePosts, firebaseLostPet, firebaseLessons, firebaseCarPool, firebaseJobPosting, firebaseShiftCoverage, firebaseSellWant, firebaseVolunteers, firebaseParty, firebaseLookingForFriends, firebasePlayGames} from '../firebase';
 
 class Index extends React.Component {
 
@@ -11,6 +11,7 @@ class Index extends React.Component {
 
         this.state = {
             show: false,
+            Post_Background_Color: "#fff",
             Post_Date: "",
             Post_Description: "",
             Post_Email: "",
@@ -40,13 +41,30 @@ class Index extends React.Component {
             Post_TimeSubmitted: "",
             Post_Title: "",
             Post_Type: "",
-            Post_Where: ""
+            Post_Where: "",
+            Posts: []
         }  
         this.showPost = this.showPost.bind(this);
         this.hidePost = this.hidePost.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
+        // this.onChangeComplete = this.onChangeComplete.bind(this);
+        // this.searchForPost = this.searchForPost.bind(this);
+        // this.callForPosts = this.callForPosts.bind(this);
     }
+
+    // callForPosts(){
+    //     firebasePosts.limitToFirst(6).on("value", snapshot => {
+    //         let Posts = [];
+    //         snapshot.forEach(snap => {
+    //             Posts.push(snap.val());
+    //             this.setState({Posts: Posts})
+    //         })
+    //         console.log(Posts)
+    //     })
+    //     // alert("ATTENTION! ATTENTION! ATTENTION! ATTENTION! ATTENTION! --------------------------------------------------------------------------- This is a work in progress. Some aspects of this project do not work yet. Such as, the 'Search For A Post' buttons or the pagination, as well as a few other features. A lot wanting to be added. Gotta start somewhere. --------------------------------------------------------------------------- You can create a post and see it displayed. Will only display first 6 posts that have been created, until pagination is working.")
+    // }
+
 
     showPost = (title) => {
         this.setState({
@@ -69,7 +87,48 @@ class Index extends React.Component {
         console.log(event)
         console.log(this.state.Post_Title)
     }
-    
+
+    onChangeComplete = (color) => {
+        console.log(this.state.Post_Background_Color)
+        console.log(color)
+        this.setState({ Post_Background_Color: color.hex });
+        console.log(this.state.Post_Background_Color)
+    };
+
+    // searchForPost(post){
+    //     firebaseDatabase.ref('Posts/' + post ).limitToFirst(6).on("value", snapshot => {
+    //         let Posts = [];
+    //         snapshot.forEach(snap => {
+    //             Posts.push(snap.val());
+    //             this.setState({Posts: Posts})
+    //         })
+    //         console.log(Posts)
+    //     })
+    // }
+
+    // submitPost = () => {
+    //     console.log(this.state.Post_Title)
+    //     if(this.state.Post_Title === "LOST PET"){
+    //         db.collection("Posts").add({
+    //             // TimeSubmitted: Date(),
+    //             Type: this.state.Post_Title,
+    //             Image: this.state.Post_Image,
+    //             Description: this.state.Post_Description,
+    //             Email: this.state.Post_Email,
+    //             PhoneNumber: this.state.Post_PhoneNumber,
+    //             Reward: this.state.Post_Reward
+    //         })
+    //         .then(() => {
+    //             console.log("Document successfully written!");
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error writing document: ", error);
+    //         });
+    //     }
+    //     console.log('working')
+    // }
+
+
     submitPost = () => {
         if(this.state.Post_Title === "LOST PET"){
             firebasePosts.push().set({ 
@@ -79,7 +138,18 @@ class Index extends React.Component {
                 Description: this.state.Post_Description,
                 Email: this.state.Post_Email,
                 PhoneNumber: this.state.Post_PhoneNumber,
-                Reward: this.state.Post_Reward
+                Reward: this.state.Post_Reward,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseLostPet.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                Image: this.state.Post_Image,
+                Description: this.state.Post_Description,
+                Email: this.state.Post_Email,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Reward: this.state.Post_Reward,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }        
         else if (this.state.Post_Title === "LESSONS"){
@@ -91,7 +161,19 @@ class Index extends React.Component {
                 Price: this.state.Post_Price,
                 PhoneNumber: this.state.Post_PhoneNumber,
                 Email: this.state.Post_Email,
-                LessonType: this.state.Post_LessonType
+                LessonType: this.state.Post_LessonType,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseLessons.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
+                TimeAvailableFrom: this.state.Post_TimeAvailableFrom,
+	            TimeAvailableTo: this.state.Post_TimeAvailableTo,
+                Price: this.state.Post_Price,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                LessonType: this.state.Post_LessonType,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "CAR POOL"){
@@ -102,7 +184,18 @@ class Index extends React.Component {
                 Date: this.state.Post_Date,
                 PhoneNumber: this.state.Post_PhoneNumber,
                 Email: this.state.Post_Email,
-                SpacesLeft: this.state.Post_SpacesLeft
+                SpacesLeft: this.state.Post_SpacesLeft,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseCarPool.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                SpacesLeft: this.state.Post_SpacesLeft,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "JOB POSTING"){
@@ -112,7 +205,17 @@ class Index extends React.Component {
                 JobTitle: this.state.Post_JobTitle,
                 JobDescription: this.state.Post_Description,
                 SalaryRange: this.state.Post_SalaryRange,
-                JobRequirements: this.state.Post_JobRequirements
+                JobRequirements: this.state.Post_JobRequirements,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseJobPosting.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
+                JobTitle: this.state.Post_JobTitle,
+                JobDescription: this.state.Post_Description,
+                SalaryRange: this.state.Post_SalaryRange,
+                JobRequirements: this.state.Post_JobRequirements,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "SHIFT COVERAGE"){
@@ -126,18 +229,45 @@ class Index extends React.Component {
                     TimeAvailable3: this.state.Post_ShiftTimeAvailable3,
                     TimeAvailable4: this.state.Post_ShiftTimeAvailable4
                 },
-                PhoneNumber: this.state.Post_PhoneNumber
+                PhoneNumber: this.state.Post_PhoneNumber,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseShiftCoverage.push().set({
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title, 
+                ShiftTimeNeeded: this.state.Post_ShiftTimeNeeded,
+                ShiftTimeAvailable: {
+                    TimeAvailable1: this.state.Post_ShiftTimeAvailable1,
+                    TimeAvailable2: this.state.Post_ShiftTimeAvailable2,
+                    TimeAvailable3: this.state.Post_ShiftTimeAvailable3,
+                    TimeAvailable4: this.state.Post_ShiftTimeAvailable4
+                },
+                PhoneNumber: this.state.Post_PhoneNumber,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "SELLING-WANTED"){
             firebasePosts.push().set({ 
                 TimeSubmitted: Date(),
                 Type: this.state.Post_Title,
+                Sell_Want: this.state.Post_Sell_Want,
                 ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
                 Description: this.state.Post_Description,
                 Price: this.state.Post_Price,
                 PhoneNumber: this.state.Post_PhoneNumber,
-                Email: this.state.Post_Email
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseSellWant.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                Sell_Want: this.state.Post_Sell_Want,
+                ItemForSale_Wanted: this.state.Post_ItemForSale_Wanted,
+                Description: this.state.Post_Description,
+                Price: this.state.Post_Price,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "VOLUNTEERS"){
@@ -148,7 +278,18 @@ class Index extends React.Component {
                 Where: this.state.Post_Where,
                 Time: this.state.Post_Time,
                 Date: this.state.Post_Date,
-                Description: this.state.Post_Description
+                Description: this.state.Post_Description,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseVolunteers.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                SellWant: this.state.Post_Sell_Want,
+                Where: this.state.Post_Where,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                Description: this.state.Post_Description,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "PARTY"){
@@ -158,7 +299,17 @@ class Index extends React.Component {
                 Where: this.state.Post_Where,
                 Time: this.state.Post_Time,
                 Date: this.state.Post_Date,
-                Description: this.state.Post_Description
+                Description: this.state.Post_Description,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseParty.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                Where: this.state.Post_Where,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+                Description: this.state.Post_Description,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "LOOKING FOR FRIENDS"){
@@ -167,7 +318,16 @@ class Index extends React.Component {
                 Type: this.state.Post_Title,
                 Hobbies: this.state.Post_Hobbies,
                 PhoneNumber: this.state.Post_PhoneNumber,
-                Email: this.state.Post_Email
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebaseLookingForFriends.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                Hobbies: this.state.Post_Hobbies,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else if (this.state.Post_Title === "PLAY GAMES"){
@@ -179,7 +339,19 @@ class Index extends React.Component {
                 Date: this.state.Post_Date,
 	            Description: this.state.Post_Description,
                 PhoneNumber: this.state.Post_PhoneNumber,
-                Email: this.state.Post_Email
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
+            })
+            firebasePlayGames.push().set({ 
+                TimeSubmitted: Date(),
+                Type: this.state.Post_Title,
+                Game: this.state.Post_Game,
+                Time: this.state.Post_Time,
+                Date: this.state.Post_Date,
+	            Description: this.state.Post_Description,
+                PhoneNumber: this.state.Post_PhoneNumber,
+                Email: this.state.Post_Email,
+                BackgroundColor: this.state.Post_Background_Color
             })
         }
         else{
@@ -193,8 +365,8 @@ class Index extends React.Component {
                 <div className="Container">
                     <div className="row justify-content-center">
                         <Nav showPost={this.showPost} PostInfo={this.state}/>
-                        <Bulletin PostInfo={this.state}/>
-                        <PostForm hidePost={this.hidePost} submitPost={this.submitPost} PostInfo={this.state} handleChange={this.handleChange}/>
+                        <Bulletin PostInfo={this.state} />
+                        <PostForm hidePost={this.hidePost} submitPost={this.submitPost} PostInfo={this.state} onChangeComplete={this.onChangeComplete} handleChange={this.handleChange} />
                     </div>
                 </div>
             </div>

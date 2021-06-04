@@ -33,6 +33,7 @@
 .post-results{
     margin-top: 20px;
     display: flex;
+    margin-bottom: 0px;
 }
 .buttons{
     display: flex;
@@ -48,4 +49,7 @@
 }
 .google-map{
     width: 100%;
+}
+.github-picker{
+    width: 415px !important;
 }
