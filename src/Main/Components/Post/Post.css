@@ -30,6 +30,12 @@
     padding: 20px;
     margin-top: 20px;
 }
+.post-image{
+    height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .post-results{
     margin-top: 20px;
     display: flex;

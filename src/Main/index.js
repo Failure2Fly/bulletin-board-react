@@ -3,6 +3,9 @@ import Nav from './Components/Nav';
 import Bulletin from './Components/Bulletin';
 import PostForm from './Components/PostForm';
 import {firebasePosts, firebaseLostPet, firebaseLessons, firebaseCarPool, firebaseJobPosting, firebaseShiftCoverage, firebaseSellWant, firebaseVolunteers, firebaseParty, firebaseLookingForFriends, firebasePlayGames} from '../firebase';
+import * as filestack from 'filestack-js';
+
+const client = filestack.init('AHNLMQPjSLusKOLv01SOhz');
 
 class Index extends React.Component {
 
@@ -48,6 +51,7 @@ class Index extends React.Component {
         this.hidePost = this.hidePost.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.submitPost = this.submitPost.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
         // this.onChangeComplete = this.onChangeComplete.bind(this);
         // this.searchForPost = this.searchForPost.bind(this);
         // this.callForPosts = this.callForPosts.bind(this);
@@ -75,7 +79,8 @@ class Index extends React.Component {
 
     hidePost = () => {
         this.setState({
-            show: false
+            show: false,
+            Post_Background_Color: '#fff'
         });
     };
 
@@ -94,6 +99,18 @@ class Index extends React.Component {
         this.setState({ Post_Background_Color: color.hex });
         console.log(this.state.Post_Background_Color)
     };
+    
+
+    uploadImage() {
+        console.log('Hello')
+        const options = {
+            accept: ["image/*"],
+            onFileUploadFinished: file => {
+                this.setState({Post_Image: file.url});        
+            }
+        };
+        client.picker(options).open();
+	}
 
     // searchForPost(post){
     //     firebaseDatabase.ref('Posts/' + post ).limitToFirst(6).on("value", snapshot => {
@@ -366,7 +383,7 @@ class Index extends React.Component {
                     <div className="row justify-content-center">
                         <Nav showPost={this.showPost} PostInfo={this.state}/>
                         <Bulletin PostInfo={this.state} />
-                        <PostForm hidePost={this.hidePost} submitPost={this.submitPost} PostInfo={this.state} onChangeComplete={this.onChangeComplete} handleChange={this.handleChange} />
+                        <PostForm hidePost={this.hidePost} submitPost={this.submitPost} PostInfo={this.state} uploadImage={this.uploadImage} onChangeComplete={this.onChangeComplete} handleChange={this.handleChange} />
                     </div>
                 </div>
             </div>

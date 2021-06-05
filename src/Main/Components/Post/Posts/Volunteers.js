@@ -3,19 +3,20 @@ import PostWhere from '../PostElements/Where';
 import PostTime from '../PostElements/Time';
 import PostDate from '../PostElements/Date';
 import PostDescription from '../PostElements/Description';
-
+import ColorPicker from '../../../ColorPicker';
 
 class Volunteers extends React.Component {
 
 
     render() {
         return (
-            <div className="post-full">
+            <div className="post-full" style={{backgroundColor:this.props.PostInfo.Post_Background_Color}}>
                 <form>
                     <div className="form-group post-title">
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
+                        <ColorPicker PostElement={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
                         <PostWhere PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostTime PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostDate PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>

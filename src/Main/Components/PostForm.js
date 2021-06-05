@@ -17,52 +17,52 @@ class PostForm extends React.Component{
   render() {
       if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'LOST PET'){
         return (
-          <LostPet hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
+          <LostPet hidePost={this.props.hidePost} submitPost={this.props.submitPost} uploadImage={this.props.uploadImage} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       }
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'LESSONS'){
         return (
-          <Lessons hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <Lessons hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       }
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'CAR POOL'){
         return (
-          <CarPool hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <CarPool hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'JOB POSTING'){
         return (
-          <JobPosting hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <JobPosting hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'SHIFT COVERAGE'){
         return (
-          <ShiftCoverage hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <ShiftCoverage hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'SELLING-WANTED'){
         return (
-          <SellWant hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <SellWant hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'VOLUNTEERS'){
         return (
-          <Volunteers hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <Volunteers hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'PARTY'){
         return (
-          <Party hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <Party hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'LOOKING FOR FRIENDS'){
         return (
-          <LookingForFriends hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <LookingForFriends hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       } 
       else if (this.props.PostInfo.show && this.props.PostInfo.Post_Title === 'PLAY GAMES'){
         return (
-          <PlayGames hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo}/>
+          <PlayGames hidePost={this.props.hidePost} submitPost={this.props.submitPost} handleChange={this.props.handleChange} PostInfo={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
         );
       }       
       else {

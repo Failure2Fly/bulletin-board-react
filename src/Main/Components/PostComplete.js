@@ -46,12 +46,10 @@ class PostComplete extends React.Component{
                 <div className="form-group post-title">
                   <h2>{data.Type}</h2>
                 </div>
+                <img src={data.Image} className="post-image"></img>
                 <table class="table post-results">
                   <tbody>
-                    <tr>
-                      <th scope="row">Image</th>
-                      <td>{data.Image}</td>
-                    </tr>
+
                     <tr>
                       <th scope="row">Description</th>
                       <td>{data.Description}</td>

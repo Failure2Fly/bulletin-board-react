@@ -5,18 +5,19 @@ import PostDescription from '../PostElements/Description';
 import PostPrice from '../PostElements/Price';
 import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
-
+import ColorPicker from '../../../ColorPicker';
 
 class SellWant extends React.Component {
 
     render() {
         return (
-            <div className="post-full">
+            <div className="post-full" style={{backgroundColor:this.props.PostInfo.Post_Background_Color}}>
                 <form>
                     <div className="form-group post-title">
                         <h2>{this.props.PostInfo.Post_Title}</h2>
                     </div>
                     <div className="post-inputs">
+                        <ColorPicker PostElement={this.props.PostInfo} onChangeComplete={this.props.onChangeComplete}/>
                         <PostItemForSaleWanted PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostSellWantedRadio PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
                         <PostDescription PostElement={this.props.PostInfo} handleChange={this.props.handleChange}/>
