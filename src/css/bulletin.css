@@ -1,0 +1,13 @@
+.bulletin {
+    background-image: url("../img/cork-board.jpg");
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.pagination-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+}
