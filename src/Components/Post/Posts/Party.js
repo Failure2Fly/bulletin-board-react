@@ -4,6 +4,7 @@ import PostTime from '../PostElements/Time';
 import PostDate from '../PostElements/Date';
 import PostDescription from '../PostElements/Description';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseParty} from '../../../firebase';
 
 export default function Party({setShowPost, postTitle}){
@@ -15,7 +16,7 @@ export default function Party({setShowPost, postTitle}){
     const [postDescription, setPostDescription] = useState('')
 
     const submitParty = () => {
-        firebasePosts.push().set({ 
+        push(firebasePosts,{ 
             TimeSubmitted: Date(),
             Type: postTitle,
             Where: postWhere,
@@ -24,7 +25,7 @@ export default function Party({setShowPost, postTitle}){
             Description: postDescription,
             BackgroundColor: postColor
         })
-        firebaseParty.push().set({ 
+        push(firebaseParty,{ 
             TimeSubmitted: Date(),
             Type: postTitle,
             Where: postWhere,

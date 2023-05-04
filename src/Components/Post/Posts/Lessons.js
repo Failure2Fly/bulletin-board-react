@@ -5,6 +5,7 @@ import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostLessonType from '../PostElements/LessonType';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseLessons} from '../../../firebase';
 
 export default function Lessons({setShowPost, postTitle}) {
@@ -18,7 +19,7 @@ export default function Lessons({setShowPost, postTitle}) {
     const [postLessonType, setPostLessonType] = useState('')
   
     const submitLessons = () => {
-        firebasePosts.push().set({
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             TimeAvailableFrom: postTimeAvailableFrom,
@@ -29,7 +30,7 @@ export default function Lessons({setShowPost, postTitle}) {
             LessonType: postLessonType,
             BackgroundColor: postColor
         })
-        firebaseLessons.push().set({
+        push(firebaseLessons, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             TimeAvailableFrom: postTimeAvailableFrom,

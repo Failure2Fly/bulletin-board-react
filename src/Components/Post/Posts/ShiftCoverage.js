@@ -3,6 +3,7 @@ import PostShiftTimeNeeded from '../PostElements/ShiftTimeNeeded';
 import PostShiftTimeAvailable from '../PostElements/ShiftTimeAvailable';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseShiftCoverage} from '../../../firebase';
 
 export default function SellWShiftCoverage({setShowPost, postTitle}){   
@@ -13,7 +14,7 @@ export default function SellWShiftCoverage({setShowPost, postTitle}){
     const [postPhoneNumber, setPostPhoneNumber] = useState('')
     
     const submitShiftCoverage = () => {
-        firebasePosts.push().set({
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             ShiftTimeNeeded: postShiftTimeNeeded,
@@ -23,7 +24,7 @@ export default function SellWShiftCoverage({setShowPost, postTitle}){
             PhoneNumber: postPhoneNumber,
             BackgroundColor: postColor
         })
-        firebaseShiftCoverage.push().set({
+        push(firebaseShiftCoverage, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             ShiftTimeNeeded: postShiftTimeNeeded,

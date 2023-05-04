@@ -1,21 +1,21 @@
 {
   "name": "bulletin-board-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "cloudinary": "^1.25.2",
-    "filestack-js": "^3.23.1",
-    "firebase": "^8.4.1",
-    "gh-pages": "^3.1.0",
-    "react": "^17.0.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "cloudinary": "^1.35.0",
+    "filestack-js": "^3.26.1",
+    "firebase": "^9.19.1",
+    "gh-pages": "^5.0.0",
+    "react": "^18.2.0",
     "react-color": "^2.19.3",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
     "simple-color-picker": "^1.0.5",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^3.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

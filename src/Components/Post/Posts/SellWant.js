@@ -6,6 +6,7 @@ import PostPrice from '../PostElements/Price';
 import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseSellWant} from '../../../firebase';
 
 export default function SellWant({setShowPost, postTitle}){
@@ -19,7 +20,7 @@ export default function SellWant({setShowPost, postTitle}){
     const [postPhoneNumber, setPostPhoneNumber] = useState('')
 
     const submitSellWant = () => {
-        firebasePosts.push().set({ 
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Sell_Want: postSellWantRadio,
@@ -30,7 +31,7 @@ export default function SellWant({setShowPost, postTitle}){
             Email: postEmail,
             BackgroundColor: postColor 
         })
-        firebaseSellWant.push().set({ 
+        push(firebaseSellWant, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Sell_Want: postSellWantRadio,

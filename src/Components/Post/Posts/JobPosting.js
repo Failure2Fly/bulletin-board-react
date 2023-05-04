@@ -4,6 +4,7 @@ import PostDescription from '../PostElements/Description';
 import PostSalary from '../PostElements/Salary';
 import PostJobRequirements from '../PostElements/JobRequirements';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseJobPosting} from '../../../firebase';
 
 export default function JobPosting({setShowPost, postTitle}){
@@ -15,7 +16,7 @@ export default function JobPosting({setShowPost, postTitle}){
     const [postJobRequirements, setPostJobRequirements] = useState('') 
 
     const submitJobPosting = () => {
-        firebasePosts.push().set({
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             JobTitle: postJobTitle,
@@ -24,7 +25,7 @@ export default function JobPosting({setShowPost, postTitle}){
             JobRequirements: postJobRequirements,
             BackgroundColor: postColor
         })
-        firebaseJobPosting.push().set({
+        push(firebaseJobPosting, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             JobTitle: postJobTitle,

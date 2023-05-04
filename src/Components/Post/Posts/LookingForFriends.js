@@ -3,6 +3,7 @@ import PostHobbies from '../PostElements/Hobbies';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostEmail from '../PostElements/Email';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseLookingForFriends} from '../../../firebase';
 
 export default function LookingForFriends({setShowPost, postTitle}){
@@ -14,7 +15,7 @@ export default function LookingForFriends({setShowPost, postTitle}){
 
 
     const submitLookingForFriends = () => {
-        firebasePosts.push().set({ 
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Hobbies: postHobbies,
@@ -22,7 +23,7 @@ export default function LookingForFriends({setShowPost, postTitle}){
             Email: postEmail,
             BackgroundColor: postColor
         })
-        firebaseLookingForFriends.push().set({ 
+        push(firebaseLookingForFriends, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Hobbies: postHobbies,

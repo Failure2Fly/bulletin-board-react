@@ -1,30 +1,52 @@
 import React, {useEffect } from 'react';
+import { doc, getDocs, onValue } from 'firebase/database';
+// import { doc, getDocs } from "firebase/firestore";
 import {firebasePosts} from '../firebase.js';
 
 
 export default function PostComplete({posts, setPosts}){
 
+  // const q = query(firebasePosts);
+  // const docRef = doc(firebasePosts);
+  // const querySnapshot =  getDocs(docRef);
+
   useEffect(() => {
-    const unsubscribe = 
-    firebasePosts
-      .limitToFirst(8)
-      .on("value", (snapshot) => {
+    const callPosts = () => {
+      onValue(firebasePosts, (snapshot) => {
         snapshot.forEach((snap) => {
           // posts.push() here is no good, you need to do mutable updates instead of mutating the state
           // also, use the callback setState when the next state depends on the previous
           setPosts((posts) => [...posts, snap.val()])
         })
-      })
+        // console.log(info);
+        // setPosts((posts) => [...posts, info]);
+      });
+    }
 
     // make sure you clean up the subscription to prevent memory leaks
     return () => {
-      unsubscribe()
+      callPosts()
     }
-    
+
   }, [setPosts])
 
+
+
+  // const callPosts =  () => {
+  //   onValue(firebasePosts, (snapshot) => {
+  //     const data = snapshot.val();
+  //     console.log(data);
+  //     setPosts((posts) => [...posts, data]);
+  //     console.log(posts);
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   callPosts();      
+  // }, [])
+
   return (
-      <div className="post-list">
+    <div className="post-list">
       {posts.map(data => {
         if(data.Type === "LOST PET") {
           return (

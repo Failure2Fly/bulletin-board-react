@@ -5,6 +5,7 @@ import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostImage from '../PostElements/Image';
 import PostReward from '../PostElements/Reward';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseLostPet} from '../../../firebase';
 
 export default function LostPet({setShowPost, postTitle}){  
@@ -17,7 +18,7 @@ export default function LostPet({setShowPost, postTitle}){
   const [postReward, setPostReward] = useState('')
   
   const submitLostPet = () => {
-    firebasePosts.push().set({ 
+    push(firebasePosts, { 
       TimeSubmitted: Date(),
       Type: postTitle,
       Image: postImage,
@@ -27,7 +28,7 @@ export default function LostPet({setShowPost, postTitle}){
       Reward: postReward,
       BackgroundColor: postColor
     })
-    firebaseLostPet.push().set({ 
+    push(firebaseLostPet, { 
         TimeSubmitted: Date(),
         Type: postTitle,
         Image: postImage,

@@ -6,6 +6,7 @@ import PostDescription from '../PostElements/Description';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostEmail from '../PostElements/Email';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebasePlayGames} from '../../../firebase';
 
 export default function PlayGames({setShowPost, postTitle}){
@@ -19,7 +20,7 @@ export default function PlayGames({setShowPost, postTitle}){
     const [postEmail, setPostEmail] = useState('') 
 
     const submitPlayGames = () => {
-        firebasePosts.push().set({ 
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Game: postActivity,
@@ -30,7 +31,7 @@ export default function PlayGames({setShowPost, postTitle}){
             Email: postEmail,
             BackgroundColor: postColor
         })
-        firebasePlayGames.push().set({ 
+        push(firebasePlayGames, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Game: postActivity,

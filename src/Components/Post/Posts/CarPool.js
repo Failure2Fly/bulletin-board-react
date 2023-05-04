@@ -5,6 +5,7 @@ import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostSpacesLeft from '../PostElements/SpacesLeft';
 import ColorPicker from '../../../ColorPicker';
+import { getDatabase, ref, set, push } from "firebase/database";
 import {firebasePosts, firebaseCarPool} from '../../../firebase';
 
 export default function CarPool({setShowPost, postTitle}){
@@ -17,7 +18,7 @@ export default function CarPool({setShowPost, postTitle}){
     const [postSpacesLeft, setPostSpacesLeft] = useState('')
 
     const submitCarPool = () => {
-        firebasePosts.push().set({
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             Time: postTime,
@@ -27,7 +28,7 @@ export default function CarPool({setShowPost, postTitle}){
             SpacesLeft: postSpacesLeft,
             BackgroundColor: postColor
         })
-        firebaseCarPool.push().set({
+        push(firebaseCarPool, { 
             TimeSubmitted: Date(),
             Type: postTitle, 
             Time: postTime,

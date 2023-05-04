@@ -4,7 +4,8 @@ import PostTime from '../PostElements/Time';
 import PostDate from '../PostElements/Date';
 import PostDescription from '../PostElements/Description';
 import ColorPicker from '../../../ColorPicker';
-import {firebasePosts, firebaseVolunteers} from '../../../firebase';
+import { getDatabase, ref, set, push } from "firebase/database";
+import {firebaseDatabase, firebasePosts, firebaseVolunteers} from '../../../firebase';
 
 export default function Volunteers({setShowPost, postTitle}){
 
@@ -15,7 +16,7 @@ export default function Volunteers({setShowPost, postTitle}){
     const [postDescription, setPostDescription] = useState('')
 
     const submitVolunteers = () => {
-        firebasePosts.push().set({ 
+        push(firebasePosts, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Where: postWhere,
@@ -24,7 +25,7 @@ export default function Volunteers({setShowPost, postTitle}){
             Description: postDescription,
             BackgroundColor: postColor
         })
-        firebaseVolunteers.push().set({ 
+        push(firebaseVolunteers, { 
             TimeSubmitted: Date(),
             Type: postTitle,
             Where: postWhere,

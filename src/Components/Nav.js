@@ -2,10 +2,10 @@ import React from 'react';
 import '../css/nav.css'
 import '../css/bulletin.css';
 import '../css/post.css';
+import { getDatabase, ref, onValue, child, get} from "firebase/database";
 import { firebaseDatabase, firebasePosts} from '../firebase';
 
-export default function Nav({setShowPost, setPostTitle, setPosts}){
-
+export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
 
     const showFullPost = (title) =>{
         setShowPost(true)
@@ -13,42 +13,63 @@ export default function Nav({setShowPost, setPostTitle, setPosts}){
     }
 
     const showAllPosts = () => {
-        setPosts([])
-        const unsubscribe = 
-        firebasePosts
-        .limitToFirst(6)
-        .on("value", (snapshot) => {
-            snapshot.forEach((snap) => {
-            // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-            // also, use the callback setState when the next state depends on the previous
-            setPosts((posts) => [...posts, snap.val()])
-            })
-        })
-
-        // make sure you clean up the subscription to prevent memory leaks
-        return () => {
-        unsubscribe()
-        }
+        setPosts([]);
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `Posts`)).then((snapshot) => {
+            if (snapshot.exists()) {
+                snapshot.forEach((snap) => {
+                    // posts.push() here is no good, you need to do mutable updates instead of mutating the state
+                    // also, use the callback setState when the next state depends on the previous
+                    setPosts((posts) => [...posts, snap.val()])
+                  })
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     }
+
 
     const searchForPost = (title) => {
-        setPosts([])
-        const unsubscribe = firebaseDatabase
-          .ref('Posts/' + title )
-          .limitToFirst(6)
-          .on("value", (snapshot) => {
-            snapshot.forEach((snap) => {
-              // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-              // also, use the callback setState when the next state depends on the previous
-              setPosts((posts) => [...posts, snap.val()])
-            })
-          })
+        setPosts([]);
+            const dbRef = ref(getDatabase());
+            get(child(dbRef, `Posts/${title}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    snapshot.forEach((snap) => {
+                        // posts.push() here is no good, you need to do mutable updates instead of mutating the state
+                        // also, use the callback setState when the next state depends on the previous
+                        setPosts((posts) => [...posts, snap.val()])
+                      })
+                } else {
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        // }
     
         // make sure you clean up the subscription to prevent memory leaks
-        return () => {
-          unsubscribe()
-        }
+        // return () => {
+        //     callPost();
+        //     console.log(title);
+        // }
+
+        console.log(posts);
+    
     }
+
+
+    // const dbRef = ref(getDatabase());
+    // get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+    //     if (snapshot.exists()) {
+    //         console.log(snapshot.val());
+    //     } else {
+    //         console.log("No data available");
+    //     }
+    // }).catch((error) => {
+    //     console.error(error);
+    // });
 
     // useEffect(() => {
     //     const unsubscribe = firebaseDatabase

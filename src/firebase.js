@@ -1,7 +1,11 @@
-import firebase from 'firebase/app';
-import 'firebase/app';
-import 'firebase/database';
-import 'firebase/firebase-firestore';
+// import firebase from 'firebase/app';
+// import 'firebase/app';
+// import 'firebase/database';
+// import 'firebase/firebase-firestore';
+
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref } from "firebase/database";
 
 // const firebase = require("firebase");
 // require("firebase/firestore");
@@ -17,21 +21,24 @@ const firebaseConfig = {
     measurementId: "G-54P5QC4PL8"
 };
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const firebaseDatabase = firebase.database();
-const firebasePosts = firebaseDatabase.ref('Posts');
-const firebaseLostPet = firebaseDatabase.ref('Posts/LostPet');
-const firebaseLessons = firebaseDatabase.ref('Posts/Lessons');
-const firebaseCarPool = firebaseDatabase.ref('Posts/CarPool');
-const firebaseJobPosting = firebaseDatabase.ref('Posts/JobPosting');
-const firebaseShiftCoverage = firebaseDatabase.ref('Posts/ShiftCoverage');
-const firebaseSellWant = firebaseDatabase.ref('Posts/SellWant');
-const firebaseVolunteers = firebaseDatabase.ref('Posts/Volunteers');
-const firebaseParty = firebaseDatabase.ref('Posts/Party');
-const firebaseLookingForFriends = firebaseDatabase.ref('Posts/LookingForFriends');
-const firebasePlayGames = firebaseDatabase.ref('Posts/PlayGames');
+const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
+const firebaseDatabase = getDatabase(app);
+// const firebaseDatabase = firebaseDatabase.ref();
+const firebasePosts = ref(firebaseDatabase, 'Posts');
+const firebaseLostPet = ref(firebaseDatabase,'Posts/LostPet');
+const firebaseLessons = ref(firebaseDatabase, 'Posts/Lessons');
+const firebaseCarPool = ref(firebaseDatabase, 'Posts/CarPool');
+const firebaseJobPosting = ref(firebaseDatabase, 'Posts/JobPosting');
+const firebaseShiftCoverage = ref(firebaseDatabase, 'Posts/ShiftCoverage');
+const firebaseSellWant = ref(firebaseDatabase, 'Posts/SellWant');
+const firebaseVolunteers = ref(firebaseDatabase, 'Posts/Volunteers');
+const firebaseParty = ref(firebaseDatabase, 'Posts/Party');
+const firebaseLookingForFriends = ref(firebaseDatabase, 'Posts/LookingForFriends');
+const firebasePlayGames = ref(firebaseDatabase, 'Posts/PlayGames');
 
 
 // firebase.initializeApp({
@@ -42,8 +49,8 @@ const firebasePlayGames = firebaseDatabase.ref('Posts/PlayGames');
   
 
 export {
-    firebase,
-    db,
+    app, 
+    // analytics,
     firebaseDatabase,
     firebasePosts,
     firebaseLostPet,
