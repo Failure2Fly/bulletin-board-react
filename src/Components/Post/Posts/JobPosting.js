@@ -4,7 +4,7 @@ import PostDescription from '../PostElements/Description';
 import PostSalary from '../PostElements/Salary';
 import PostJobRequirements from '../PostElements/JobRequirements';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseJobPosting} from '../../../firebase';
 
 export default function JobPosting({setShowPost, postTitle}){

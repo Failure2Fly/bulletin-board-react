@@ -1,5 +1,5 @@
 import React, {useEffect } from 'react';
-import { doc, getDocs, onValue } from 'firebase/database';
+import { onValue } from 'firebase/database';
 // import { doc, getDocs } from "firebase/firestore";
 import {firebasePosts} from '../firebase.js';
 

@@ -5,7 +5,7 @@ import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostImage from '../PostElements/Image';
 import PostReward from '../PostElements/Reward';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseLostPet} from '../../../firebase';
 
 export default function LostPet({setShowPost, postTitle}){  

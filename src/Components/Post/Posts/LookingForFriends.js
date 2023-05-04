@@ -3,7 +3,7 @@ import PostHobbies from '../PostElements/Hobbies';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostEmail from '../PostElements/Email';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseLookingForFriends} from '../../../firebase';
 
 export default function LookingForFriends({setShowPost, postTitle}){

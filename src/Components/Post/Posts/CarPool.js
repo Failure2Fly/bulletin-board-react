@@ -5,7 +5,7 @@ import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostSpacesLeft from '../PostElements/SpacesLeft';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseCarPool} from '../../../firebase';
 
 export default function CarPool({setShowPost, postTitle}){

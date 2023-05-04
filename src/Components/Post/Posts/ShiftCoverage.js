@@ -3,7 +3,7 @@ import PostShiftTimeNeeded from '../PostElements/ShiftTimeNeeded';
 import PostShiftTimeAvailable from '../PostElements/ShiftTimeAvailable';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseShiftCoverage} from '../../../firebase';
 
 export default function SellWShiftCoverage({setShowPost, postTitle}){   

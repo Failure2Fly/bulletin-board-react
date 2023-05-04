@@ -4,8 +4,8 @@ import PostTime from '../PostElements/Time';
 import PostDate from '../PostElements/Date';
 import PostDescription from '../PostElements/Description';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
-import {firebaseDatabase, firebasePosts, firebaseVolunteers} from '../../../firebase';
+import { push } from "firebase/database";
+import { firebasePosts, firebaseVolunteers} from '../../../firebase';
 
 export default function Volunteers({setShowPost, postTitle}){
 

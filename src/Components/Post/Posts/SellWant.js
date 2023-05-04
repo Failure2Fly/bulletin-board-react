@@ -6,7 +6,7 @@ import PostPrice from '../PostElements/Price';
 import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseSellWant} from '../../../firebase';
 
 export default function SellWant({setShowPost, postTitle}){

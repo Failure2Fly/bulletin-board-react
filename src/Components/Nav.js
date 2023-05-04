@@ -2,8 +2,8 @@ import React from 'react';
 import '../css/nav.css'
 import '../css/bulletin.css';
 import '../css/post.css';
-import { getDatabase, ref, onValue, child, get} from "firebase/database";
-import { firebaseDatabase, firebasePosts} from '../firebase';
+import { getDatabase, ref, child, get} from "firebase/database";
+// import { firebaseDatabase, firebasePosts} from '../firebase';
 
 export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
 

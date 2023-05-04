@@ -5,7 +5,7 @@ import PostEmail from '../PostElements/Email';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostLessonType from '../PostElements/LessonType';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseLessons} from '../../../firebase';
 
 export default function Lessons({setShowPost, postTitle}) {

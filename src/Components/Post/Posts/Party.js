@@ -4,7 +4,7 @@ import PostTime from '../PostElements/Time';
 import PostDate from '../PostElements/Date';
 import PostDescription from '../PostElements/Description';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebaseParty} from '../../../firebase';
 
 export default function Party({setShowPost, postTitle}){

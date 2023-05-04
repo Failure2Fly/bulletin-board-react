@@ -6,7 +6,7 @@ import PostDescription from '../PostElements/Description';
 import PostPhoneNumber from '../PostElements/PhoneNumber';
 import PostEmail from '../PostElements/Email';
 import ColorPicker from '../../../ColorPicker';
-import { getDatabase, ref, set, push } from "firebase/database";
+import { push } from "firebase/database";
 import {firebasePosts, firebasePlayGames} from '../../../firebase';
 
 export default function PlayGames({setShowPost, postTitle}){
