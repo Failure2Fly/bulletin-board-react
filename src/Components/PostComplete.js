@@ -366,7 +366,10 @@ export default function PostComplete({posts, setPosts}){
               </table>
             </div>
           )
-        }    
+        } 
+        else {
+          return null;
+        }   
       })}
     </div>
   )   
