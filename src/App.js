@@ -29,7 +29,7 @@ function App() {
       callPosts()
     }
 
-  }, [])
+  }, [setPosts])
 
 
   return (
