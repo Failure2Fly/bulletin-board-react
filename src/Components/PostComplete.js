@@ -28,7 +28,7 @@ export default function PostComplete({posts, setPosts}){
       callPosts()
     }
 
-  }, [setPosts])
+  }, [])
 
 
 
