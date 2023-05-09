@@ -1,7 +1,10 @@
 import React from 'react';
+// import { onValue } from 'firebase/database';
+// import { doc, getDocs } from "firebase/firestore";
+// import {firebasePosts} from '../firebase.js';
 
 
-export default function PostComplete({posts}){
+export default function PostComplete({posts, setPosts}){
 
   // const q = query(firebasePosts);
   // const docRef = doc(firebasePosts);
