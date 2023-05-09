@@ -1,34 +1,31 @@
-import React, {useEffect } from 'react';
-import { onValue } from 'firebase/database';
-// import { doc, getDocs } from "firebase/firestore";
-import {firebasePosts} from '../firebase.js';
+import React from 'react';
 
 
-export default function PostComplete({posts, setPosts}){
+export default function PostComplete({posts}){
 
   // const q = query(firebasePosts);
   // const docRef = doc(firebasePosts);
   // const querySnapshot =  getDocs(docRef);
 
-  useEffect(() => {
-    const callPosts = () => {
-      onValue(firebasePosts, (snapshot) => {
-        snapshot.forEach((snap) => {
-          // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-          // also, use the callback setState when the next state depends on the previous
-          setPosts((posts) => [...posts, snap.val()])
-        })
-        // console.log(info);
-        // setPosts((posts) => [...posts, info]);
-      });
-    }
+  // useEffect(() => {
+  //   const callPosts = () => {
+  //     onValue(firebasePosts, (snapshot) => {
+  //       snapshot.forEach((snap) => {
+  //         // posts.push() here is no good, you need to do mutable updates instead of mutating the state
+  //         // also, use the callback setState when the next state depends on the previous
+  //         setPosts((posts) => [...posts, snap.val()])
+  //       })
+  //       // console.log(info);
+  //       // setPosts((posts) => [...posts, info]);
+  //     });
+  //   }
 
-    // make sure you clean up the subscription to prevent memory leaks
-    return () => {
-      callPosts()
-    }
+  //   // make sure you clean up the subscription to prevent memory leaks
+  //   return () => {
+  //     callPosts()
+  //   }
 
-  }, [])
+  // }, [])
 
 
 
