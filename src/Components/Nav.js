@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/nav.css'
 import '../css/bulletin.css';
 import '../css/post.css';
-import { getDatabase, ref, child, get} from "firebase/database";
+import { getDatabase, ref, child, get, limitToFirst, set } from "firebase/database";
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 // import { firebaseDatabase, firebasePosts} from '../firebase';
 
-export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
+const provider = new GoogleAuthProvider();
+
+export default function Nav({setShowPost, setPostTitle, setPosts, loggedIn}){
+
+    const auth = getAuth();
+
+    const googleLogin = () => { 
+        signInWithRedirect(auth, provider);
+  
+        getRedirectResult(auth)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access Google APIs.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+      
+          // The signed-in user info.
+          const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        }); 
+
+    }
+
 
     const showFullPost = (title) =>{
         setShowPost(true)
@@ -15,7 +47,7 @@ export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
     const showAllPosts = () => {
         setPosts([]);
         const dbRef = ref(getDatabase());
-        get(child(dbRef, `Posts`)).then((snapshot) => {
+        get(child(dbRef, `Posts`), limitToFirst(6)).then((snapshot) => {
             if (snapshot.exists()) {
                 snapshot.forEach((snap) => {
                     // posts.push() here is no good, you need to do mutable updates instead of mutating the state
@@ -54,40 +86,20 @@ export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
         //     callPost();
         //     console.log(title);
         // }
-
-        console.log(posts);
     
     }
-
-
-    // const dbRef = ref(getDatabase());
-    // get(child(dbRef, `users/${userId}`)).then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //         console.log(snapshot.val());
-    //     } else {
-    //         console.log("No data available");
-    //     }
-    // }).catch((error) => {
-    //     console.error(error);
-    // });
-
-    // useEffect(() => {
-    //     const unsubscribe = firebaseDatabase
-    //       .ref('Posts/' + title )
-    //       .limitToFirst(6)
-    //       .on("value", (snapshot) => {
-    //         snapshot.forEach((snap) => {
-    //           // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-    //           // also, use the callback setState when the next state depends on the previous
-    //           setPosts((posts) => [...posts, snap.val()])
-    //         })
-    //       })
     
-    //     // make sure you clean up the subscription to prevent memory leaks
-    //     return () => {
-    //       unsubscribe()
-    //     }
-    //   }, [])
+    let button;
+
+    if (loggedIn) {
+        button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        CREATE A POST
+        </button>;
+      } else {
+        button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={() => googleLogin()}>
+        CREATE A POST
+        </button>;
+      }
 
     return (
         <div className="col nav-full col-lg-2 ">
@@ -104,9 +116,7 @@ export default function Nav({setShowPost, setPostTitle, setPosts, posts}){
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        CREATE A POST
-                        </button>
+                    {button}
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <button className="post-button" onClick={() => showFullPost('LOST PET')} >                      

@@ -1,50 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, child, get} from "firebase/database";
+import React, { useEffect, useState }  from 'react';
 import Nav from "./Components/Nav";
 import Bulletin from "./Components/Bulletin";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 function App() {
 
   const [showPost, setShowPost] = useState(false)
   const [postTitle, setPostTitle] = useState('')
   const [posts, setPosts] = useState([])
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  const auth = getAuth();
+
 
   useEffect(() => {
-    const allPosts = () => {
-      setPosts([]);
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `Posts`)).then((snapshot) => {
-          if (snapshot.exists()) {
-              snapshot.forEach((snap) => {
-                  // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-                  // also, use the callback setState when the next state depends on the previous
-                  setPosts((posts) => [...posts, snap.val()])
-                })
-          } else {
-              console.log("No data available");
-          }
-      }).catch((error) => {
-          console.error(error);
+    const userCheck = () => { 
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/auth.user
+          // const uid = user.uid;
+
+          setLoggedIn(true);
+          // ...
+        } else {
+          // User is signed out
+          // ...
+        }
       });
-  }
+
+    }
 
     // make sure you clean up the subscription to prevent memory leaks
     return () => {
-      allPosts()
+      userCheck()
     }
 
-  }, [setPosts])
+  }, [auth])
+
+
+  console.log(loggedIn);
 
 
   return (
-      <div>
-        <div className="Container">
-          <div className="row justify-content-center">
-              <Nav setShowPost={setShowPost} setPostTitle={setPostTitle} setPosts={setPosts}/>
-              <Bulletin showPost={showPost} postTitle={postTitle} setShowPost={setShowPost} posts={posts} setPosts={setPosts}/>
-          </div>
+    <div>
+      <div className="Container">
+        <div className="row justify-content-center">
+          <Nav setShowPost={setShowPost} setPostTitle={setPostTitle} setPosts={setPosts} loggedIn={loggedIn}/>
+          <Bulletin showPost={showPost} postTitle={postTitle} setShowPost={setShowPost} posts={posts} setPosts={setPosts}/>
         </div>
       </div>
+    </div>
   );
 }
 
