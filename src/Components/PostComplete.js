@@ -9,7 +9,7 @@ export default function PostComplete({posts, setPosts}){
     // const allPosts = () => {
       let isMounted = true
       const db = getDatabase();
-      const recentPostsRef = query(ref(db, 'Posts'), limitToFirst(16));
+      const recentPostsRef = query(ref(db, 'Posts'), limitToFirst(100));
       onValue(recentPostsRef, (snapshot) => {
         if (snapshot.exists() && isMounted) {
           setPosts([]);

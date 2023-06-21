@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 const firebaseDatabase = getDatabase(app);
 
-const firebasePosts = ref(firebaseDatabase, 'AllPosts/Posts');
+const firebasePosts = ref(firebaseDatabase, 'Posts');
 const firebaseLostPet = ref(firebaseDatabase,'Posts/LostPet');
 const firebaseLessons = ref(firebaseDatabase, 'Posts/Lessons');
 const firebaseCarPool = ref(firebaseDatabase, 'Posts/CarPool');
