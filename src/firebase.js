@@ -1,14 +1,7 @@
-// import firebase from 'firebase/app';
-// import 'firebase/app';
-// import 'firebase/database';
-// import 'firebase/firebase-firestore';
-
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref } from "firebase/database";
 
-// const firebase = require("firebase");
-// require("firebase/firestore");
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAmpToiuEuTst_1ZTOarqpvjDEbsl2vulo",
@@ -21,14 +14,12 @@ const firebaseConfig = {
     measurementId: "G-54P5QC4PL8"
 };
 
-// firebase.initializeApp(firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 
 const firebaseDatabase = getDatabase(app);
-// const firebaseDatabase = firebaseDatabase.ref();
-const firebasePosts = ref(firebaseDatabase, 'Posts');
+
+const firebasePosts = ref(firebaseDatabase, 'AllPosts/Posts');
 const firebaseLostPet = ref(firebaseDatabase,'Posts/LostPet');
 const firebaseLessons = ref(firebaseDatabase, 'Posts/Lessons');
 const firebaseCarPool = ref(firebaseDatabase, 'Posts/CarPool');
@@ -40,17 +31,10 @@ const firebaseParty = ref(firebaseDatabase, 'Posts/Party');
 const firebaseLookingForFriends = ref(firebaseDatabase, 'Posts/LookingForFriends');
 const firebasePlayGames = ref(firebaseDatabase, 'Posts/PlayGames');
 
-
-// firebase.initializeApp({
-//     apiKey: "AIzaSyAmpToiuEuTst_1ZTOarqpvjDEbsl2vulo",
-//     authDomain: "bulletin-board-a367a.firebaseapp.com",
-//     projectId: "bulletin-board-a367a"
-// });
   
 
 export {
     app, 
-    // analytics,
     firebaseDatabase,
     firebasePosts,
     firebaseLostPet,

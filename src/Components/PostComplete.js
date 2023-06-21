@@ -6,13 +6,13 @@ import { getDatabase, ref, onValue, query, limitToFirst} from "firebase/database
 export default function PostComplete({posts, setPosts}){
 
   useEffect(() => {
-    const allPosts = () => {
-      setPosts([]);
-
+    // const allPosts = () => {
+      let isMounted = true
       const db = getDatabase();
       const recentPostsRef = query(ref(db, 'Posts'), limitToFirst(16));
       onValue(recentPostsRef, (snapshot) => {
-        if (snapshot.exists()) {
+        if (snapshot.exists() && isMounted) {
+          setPosts([]);
           snapshot.forEach((snap) => {
             // posts.push() here is no good, you need to do mutable updates instead of mutating the state
             // also, use the callback setState when the next state depends on the previous
@@ -23,31 +23,12 @@ export default function PostComplete({posts, setPosts}){
         }
       })
         
-      //   const data = snapshot.val();
-      //     setPosts((posts) => [...posts, data])
-      // });
-
-
-      // const dbRef = ref(getDatabase());
-
-      // get(child(dbRef, `Posts`), limitToFirst(6)).then((snapshot) => {
-      //   if (snapshot.exists()) {
-      //     snapshot.forEach((snap) => {
-      //       // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-      //       // also, use the callback setState when the next state depends on the previous
-      //       setPosts((posts) => [...posts, snap.val()])
-      //     })
-      //   } else {
-      //     console.log("No data available");
-      //   }
-      // }).catch((error) => {
-      //   console.error(error);
-      // });
-    }
+    // }
 
     // make sure you clean up the subscription to prevent memory leaks
     return () => {
-      allPosts()
+      // allPosts()
+      isMounted = false
     }
 
   }, [setPosts])

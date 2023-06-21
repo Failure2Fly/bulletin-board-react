@@ -3,40 +3,40 @@ import '../css/nav.css'
 import '../css/bulletin.css';
 import '../css/post.css';
 import { getDatabase, ref, child, get, limitToFirst, set } from "firebase/database";
-import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
+// import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 // import { firebaseDatabase, firebasePosts} from '../firebase';
 
-const provider = new GoogleAuthProvider();
+// const provider = new GoogleAuthProvider();
 
 export default function Nav({setShowPost, setPostTitle, setPosts, loggedIn}){
 
-    const auth = getAuth();
+    // const auth = getAuth();
 
-    const googleLogin = () => { 
-        signInWithRedirect(auth, provider);
+    // const googleLogin = () => { 
+    //     signInWithRedirect(auth, provider);
   
-        getRedirectResult(auth)
-        .then((result) => {
-          // This gives you a Google Access Token. You can use it to access Google APIs.
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
+    //     getRedirectResult(auth)
+    //     .then((result) => {
+    //       // This gives you a Google Access Token. You can use it to access Google APIs.
+    //       const credential = GoogleAuthProvider.credentialFromResult(result);
+    //       const token = credential.accessToken;
       
-          // The signed-in user info.
-          const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        }).catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // The email of the user's account used.
-          const email = error.customData.email;
-          // The AuthCredential type that was used.
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        }); 
+    //       // The signed-in user info.
+    //       const user = result.user;
+    //       // IdP data available using getAdditionalUserInfo(result)
+    //       // ...
+    //     }).catch((error) => {
+    //       // Handle Errors here.
+    //       const errorCode = error.code;
+    //       const errorMessage = error.message;
+    //       // The email of the user's account used.
+    //       const email = error.customData.email;
+    //       // The AuthCredential type that was used.
+    //       const credential = GoogleAuthProvider.credentialFromError(error);
+    //       // ...
+    //     }); 
 
-    }
+    // }
 
 
     const showFullPost = (title) =>{
@@ -89,17 +89,17 @@ export default function Nav({setShowPost, setPostTitle, setPosts, loggedIn}){
     
     }
     
-    let button;
+    // let button;
 
-    if (loggedIn) {
-        button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        CREATE A POST
-        </button>;
-      } else {
-        button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={() => googleLogin()}>
-        CREATE A POST
-        </button>;
-      }
+    // if (loggedIn) {
+    //     button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    //     CREATE A POST
+    //     </button>;
+    //   } else {
+    //     button = <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onClick={() => googleLogin()}>
+    //     CREATE A POST
+    //     </button>;
+    //   }
 
     return (
         <div className="col nav-full col-lg-2 ">
@@ -116,7 +116,9 @@ export default function Nav({setShowPost, setPostTitle, setPosts, loggedIn}){
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
-                    {button}
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    CREATE A POST
+                    </button>
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <button className="post-button" onClick={() => showFullPost('LOST PET')} >                      
