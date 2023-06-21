@@ -19,7 +19,7 @@
 ***
 ## How I worked on this project
 - I started on this project about a year and a half ago. Then coming back a little over a year, realized that the code was not great and could be done better. 
-- I started with reworking the folder structure. After working on getting first post to display, reworked fodler structure once more. 
+- I started with reworking the folder structure. After working on getting first post to display, reworked folder structure once more. 
 - Added firebase to project to get post information to be saved, then retrieve form database to display. 
 - Added color picker to give a little flair for the user. 
 - Added file upload for posts such as lost pet. 
