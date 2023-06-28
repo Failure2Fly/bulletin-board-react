@@ -1,6 +1,4 @@
 import React from 'react';
-import '../css/bulletin.css';
-import '../css/post.css';
 import PostComplete from "./PostComplete";
 import PostForm from "./PostForm";
 

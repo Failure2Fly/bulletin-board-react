@@ -1,0 +1,15 @@
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .full-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .Full-Bulletin .row {
+    display: inline !important;
+  }
+  .nav-full {
+    padding: 50px;
+    min-height: unset !important;
+  }
+} 

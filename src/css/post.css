@@ -68,3 +68,9 @@
 .github-picker{
     width: 415px !important;
 }
+
+@media (max-width: 420px) {
+    .post-title{
+        color: white;
+    }
+}

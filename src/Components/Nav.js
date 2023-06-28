@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import '../css/nav.css'
-import '../css/bulletin.css';
-import '../css/post.css';
-import { getDatabase, ref, child, get, limitToFirst, set } from "firebase/database";
+// import React, { useState } from 'react';
+import { getDatabase, ref, child, get, limitToFirst } from "firebase/database";
 // import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 // import { firebaseDatabase, firebasePosts} from '../firebase';
 
 // const provider = new GoogleAuthProvider();
 
-export default function Nav({setShowPost, setPostTitle, setPosts, loggedIn}){
+export default function Nav({setShowPost, setPostTitle, setPosts}){
 
     // const auth = getAuth();
 

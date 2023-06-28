@@ -1,6 +1,10 @@
 import React, { useEffect, useState }  from 'react';
 import Nav from "./Components/Nav";
 import Bulletin from "./Components/Bulletin";
+import './css/nav.css'
+import './css/bulletin.css';
+import './css/post.css';
+import './css/media-queries.css';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
@@ -46,8 +50,8 @@ function App() {
 
   return (
     <div>
-      <div className="Container">
-        <div className="row justify-content-center">
+      <div className="Container Full-Bulletin">
+        <div className="row full-page">
           <Nav setShowPost={setShowPost} setPostTitle={setPostTitle} setPosts={setPosts} loggedIn={loggedIn}/>
           <Bulletin showPost={showPost} postTitle={postTitle} setShowPost={setShowPost} posts={posts} setPosts={setPosts}/>
         </div>
