@@ -35,6 +35,16 @@ export default function Nav({setShowPost, setPostTitle, setPosts}){
 
     // }
 
+    const collapseCreatePostDropdown = () => {    
+        document.getElementById("collapseOne").classList.remove("show");
+        document.getElementById("createPostButton").classList.add("collapsed");
+    }
+
+    const collapseSearchPostDropdown = () => {    
+        document.getElementById("collapseTwo").classList.remove("show");
+        document.getElementById("searchPostButton").classList.add("collapsed");
+    }
+
 
     const showFullPost = (title) =>{
         setShowPost(true)
@@ -113,78 +123,78 @@ export default function Nav({setShowPost, setPostTitle, setPosts}){
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button id="createPostButton" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     CREATE A POST
                     </button>
                     </h2>
                     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <button className="post-button" onClick={() => showFullPost('LOST PET')} >                      
+                        <button className="post-button" onClick={() => {showFullPost('LOST PET'); collapseCreatePostDropdown(); }} >                      
                             <h5>Lost Pet</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('LESSONS')}>                      
+                        <button className="post-button" onClick={() => {showFullPost('LESSONS'); collapseCreatePostDropdown(); }}>                      
                             <h5>Lessons</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('CAR POOL')} >                      
+                        <button className="post-button" onClick={() => {showFullPost('CAR POOL'); collapseCreatePostDropdown(); }} >                      
                             <h5>Car Pool</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('JOB POSTING')}>                      
+                        <button className="post-button" onClick={() => {showFullPost('JOB POSTING'); collapseCreatePostDropdown(); }}>                      
                             <h5>Job Posting</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('SHIFT COVERAGE')} >                      
+                        <button className="post-button" onClick={() => {showFullPost('SHIFT COVERAGE'); collapseCreatePostDropdown(); }} >                      
                             <h5>Shift Coverage</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('SELLING-WANTED')}>                      
+                        <button className="post-button" onClick={() => {showFullPost('SELLING-WANTED'); collapseCreatePostDropdown(); }}>                      
                             <h5>Selling-Wanted</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('VOLUNTEERS')} >                      
+                        <button className="post-button" onClick={() => {showFullPost('VOLUNTEERS'); collapseCreatePostDropdown(); }} >                      
                             <h5>Volunteers</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('PARTY')}>                      
+                        <button className="post-button" onClick={() => {showFullPost('PARTY'); collapseCreatePostDropdown(); }}>                      
                             <h5>Party</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('LOOKING FOR FRIENDS')} >                      
+                        <button className="post-button" onClick={() => {showFullPost('LOOKING FOR FRIENDS'); collapseCreatePostDropdown(); }} >                      
                             <h5>Looking For Friends</h5>
                         </button>
-                        <button className="post-button" onClick={() => showFullPost('PLAY GAMES')}>                      
+                        <button className="post-button" onClick={() => {showFullPost('PLAY GAMES'); collapseCreatePostDropdown(); }}>                      
                             <h5>Play Games</h5>
                         </button>
                     </div>
                 </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingTwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button id="searchPostButton" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         SEARCH FOR A POST
                         </button>
                     </h2>
                     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                        <button className="post-button" onClick={() => searchForPost('LostPet')} >                      
+                        <button className="post-button" onClick={() => {searchForPost('LostPet'); collapseSearchPostDropdown(); }} >                      
                             <h5>Lost Pet</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('Lessons')}>                      
+                        <button className="post-button" onClick={() => {searchForPost('Lessons'); collapseSearchPostDropdown(); }}>                      
                             <h5>Lessons</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('CarPool')} >                      
+                        <button className="post-button" onClick={() => {searchForPost('CarPool'); collapseSearchPostDropdown(); }} >                      
                             <h5>Car Pool</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('JobPosting')}>                      
+                        <button className="post-button" onClick={() => {searchForPost('JobPosting'); collapseSearchPostDropdown(); }}>                      
                             <h5>Job Posting</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('ShiftCoverage')} >                      
+                        <button className="post-button" onClick={() => {searchForPost('ShiftCoverage'); collapseSearchPostDropdown(); }} >                      
                             <h5>Shift Coverage</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('SellWant')}>                      
+                        <button className="post-button" onClick={() => {searchForPost('SellWant'); collapseSearchPostDropdown(); }}>                      
                             <h5>Selling/Wanted</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('Volunteers')} >                      
+                        <button className="post-button" onClick={() => {searchForPost('Volunteers'); collapseSearchPostDropdown(); }} >                      
                             <h5>Volunteers</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('Party')}>                      
+                        <button className="post-button" onClick={() => {searchForPost('Party'); collapseSearchPostDropdown(); }}>                      
                             <h5>Party</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('LookingForFriends')} >                      
+                        <button className="post-button" onClick={() => {searchForPost('LookingForFriends'); collapseSearchPostDropdown(); }} >                      
                             <h5>Looking For Friends</h5>
                         </button>
-                        <button className="post-button" onClick={() => searchForPost('PlayGames')}>                      
+                        <button className="post-button" onClick={() => {searchForPost('PlayGames'); collapseSearchPostDropdown(); }}>                      
                             <h5>Play Games</h5>
                         </button>
                     </div>
