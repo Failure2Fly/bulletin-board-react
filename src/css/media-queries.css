@@ -13,3 +13,13 @@
     min-height: unset !important;
   }
 } 
+
+@media (max-width: 600px) {
+  .post-full{
+    width: 100%;
+  }
+  .github-picker{
+    width: auto !important;
+    flex-wrap: wrap !important;
+  }
+}
