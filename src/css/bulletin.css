@@ -5,9 +5,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
 }
-.pagination-bar {
+.pagination-buttons {
     display: flex;
-    position: fixed;
-    bottom: 0;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.pagination-buttons .btn {
+    width: 20%;
 }

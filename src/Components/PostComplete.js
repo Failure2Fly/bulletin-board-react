@@ -1,37 +1,10 @@
-import React, { useEffect } from 'react';
-import { getDatabase, ref, onValue, query, limitToFirst} from "firebase/database";
+import React from 'react';
+// import { getDatabase, ref, onValue, query, orderByChild, orderByKey, orderByValue, startAt, startAfter, limitToFirst, endAt, endBefore, limitToLast} from "firebase/database";
 // import {firebasePosts} from './firebase.js';
 
 
-export default function PostComplete({posts, setPosts}){
+export default function PostComplete({posts}){
 
-  useEffect(() => {
-    // const allPosts = () => {
-      let isMounted = true
-      const db = getDatabase();
-      const recentPostsRef = query(ref(db, 'Posts'), limitToFirst(100));
-      onValue(recentPostsRef, (snapshot) => {
-        if (snapshot.exists() && isMounted) {
-          setPosts([]);
-          snapshot.forEach((snap) => {
-            // posts.push() here is no good, you need to do mutable updates instead of mutating the state
-            // also, use the callback setState when the next state depends on the previous
-            setPosts((posts) => [...posts, snap.val()])
-          })
-        } else {
-          console.log("No data available");
-        }
-      })
-        
-    // }
-
-    // make sure you clean up the subscription to prevent memory leaks
-    return () => {
-      // allPosts()
-      isMounted = false
-    }
-
-  }, [setPosts])
 
   return (
     <div className="post-list">
